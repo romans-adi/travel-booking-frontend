@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const HomeCarousel = () => {
-  return (
-    <div>HomeCarousel</div>
-  )
-}
+const HomeCarousel = () => (
+  <div>HomeCarousel</div>
+);
 
-export default HomeCarousel
+export default HomeCarousel;
