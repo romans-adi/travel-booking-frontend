@@ -8,7 +8,7 @@ const initialData = [
     title: 'Explore the Charm of Paris',
     description: 'Discover the cultural and architectural wonders of the City of Light',
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/800px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg',
-    icons: ['cultural', 'architecture', 'icon3'],
+    icons: ['cultural', 'architecture', 'nightlife'],
   },
   {
     id: 2,
