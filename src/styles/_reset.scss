@@ -89,6 +89,10 @@ body {
   background-color: rgba(128, 128, 128, 0.065);
 }
 
+.App {
+  display: flex;
+}
+
 h1,
 h2,
 h3,
@@ -119,6 +123,12 @@ textarea,
 select {
   font-family: inherit;
   font-size: inherit;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
 }
 
 // Misc

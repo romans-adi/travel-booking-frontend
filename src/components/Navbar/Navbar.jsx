@@ -1,29 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import './Navbar.scss';
+import Logo from '../../assets/Images/logo.png';
 
-const Navbar = () => (
-  <div>
-    <ul className="nav-links">
-      <li>
-        <NavLink to="/">LOGO</NavLink>
-      </li>
-      <li>
-        <NavLink to="/travels">TRAVELS</NavLink>
-      </li>
-      <li>
-        <NavLink to="/reservation">RESERVATION</NavLink>
-      </li>
-      <li>
-        <NavLink to="/mytravels">MY TRAVELS</NavLink>
-      </li>
-      <li>
-        <NavLink to="/addtravel">ADD TRAVEL</NavLink>
-      </li>
-      <li>
-        <NavLink to="/deleteTravel">DELETE TRAVEL</NavLink>
-      </li>
-    </ul>
-  </div>
-);
+const Navbar = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const handleMenu = () => {
+    setShowMenu((prevShowMenu) => !prevShowMenu);
+  };
+
+  return (
+    <div id="navpanel-container" className={showMenu ? '' : 'show'}>
+      <button
+        onClick={handleMenu}
+        type="button"
+        className={showMenu ? 'burger-icon' : 'close-button'}
+      >
+        <div className={showMenu ? 'burger-bar' : 'close-bar'} />
+        <div className={showMenu ? 'burger-bar' : 'close-bar'} />
+      </button>
+      <ul className={showMenu ? 'nav-links' : 'nav-links show'}>
+        <li className="logo-container">
+          <NavLink to="/" onClick={handleMenu}>
+            <img src={Logo} alt="logo" className="logo-image" />
+          </NavLink>
+        </li>
+        <li className="navigation">
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/travels" onClick={handleMenu}>TRAVELS</NavLink>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/reservation" onClick={handleMenu}>RESERVATION</NavLink>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/mytravels" onClick={handleMenu}>MY TRAVELS</NavLink>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/addtravel" onClick={handleMenu}>ADD TRAVEL</NavLink>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/deleteTravel" onClick={handleMenu}>DELETE TRAVEL</NavLink>
+        </li>
+        <li className="social-icons">
+          FB TWITTER ETC
+        </li>
+      </ul>
+    </div>
+  );
+};
 
 export default Navbar;
