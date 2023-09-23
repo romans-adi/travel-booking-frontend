@@ -131,7 +131,7 @@ function Main() {
 
 function Item({ tour }) {
   return (
-    <div className="w-96 items-center text-center">
+    <div className="md:w-96 items-center text-center">
       <div
         className="w-full h-52 rounded-lg bg-cover bg-center"
         style={{
