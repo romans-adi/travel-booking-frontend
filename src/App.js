@@ -1,11 +1,28 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import React from 'react';
 import './App.scss';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
+import Navbar from './components/Navbar/Navbar';
+import Tours from './pages/Tours/Tours';
+import Reservation from './pages/Reservation/Reservation';
+import MyBooking from './pages/MyBooking/MyBooking';
+import BookTravel from './pages/BookTravel/BookTravel';
+import RemoveTravel from './pages/RemoveTravel/RemoveTravel';
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tours" element={<Tours />} />
+          <Route path="/reservation" element={<Reservation />} />
+          <Route path="/myBooking" element={<MyBooking />} />
+          <Route path="/booktravel" element={<BookTravel />} />
+          <Route path="/removetravel" element={<RemoveTravel />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
