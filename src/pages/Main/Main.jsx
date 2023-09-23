@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import Carousel from '../../components/mainCarousel/Carousel';
+import Carousel from '../../components/Main/Carousel';
 
 const initialData = [
   {
@@ -80,6 +80,7 @@ function Main() {
   const [itemsToShow, setItemsToShow] = useState(6);
   const [itemsToLoad] = useState(3);
   const [tourData] = useState([...initialData]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -92,6 +93,14 @@ function Main() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? tourData.length - 3 : prevIndex - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === tourData.length - 3 ? 0 : prevIndex + 1));
+  };
 
   const loadMoreItems = useCallback(() => {
     setItemsToShow((prevItemsToShow) => prevItemsToShow + itemsToLoad);
@@ -116,7 +125,7 @@ function Main() {
 
   if (isMobile) {
     return (
-      <div className="min-h-screen bg-gray-100 justify-center flex flex-col items-center text-center">
+      <div className="min-h-screen bg-gray-100 justify-center flex flex-col items-center text-center relative w-100">
         <header className="flex flex-col items-center text-center mt-10">
           <h1 className="text-4xl font-bold">Most Popular Tours</h1>
           <p className="text-gray-400 font-bold mt-4 relative flex items-center pb-10 mb-10">
@@ -136,7 +145,7 @@ function Main() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 justify-center flex flex-col items-center text-center">
+    <div className="min-h-screen bg-gray-100 justify-center flex flex-col items-center text-center relative">
       <header className="flex flex-col items-center text-center mt-10">
         <h1 className="text-4xl font-bold">Most Popular Tours</h1>
         <p className="text-gray-400 font-bold mt-4 relative flex items-center pb-10 mb-10">
@@ -146,7 +155,12 @@ function Main() {
       </header>
 
       <div className="my-8 px-4 w-3/4">
-        <Carousel items={tourData} />
+        <Carousel
+          items={tourData}
+          currentIndex={currentIndex}
+          prevSlide={prevSlide}
+          nextSlide={nextSlide}
+        />
       </div>
     </div>
   );

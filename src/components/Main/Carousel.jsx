@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-function Carousel({ items }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === items.length - 3 ? 0 : prevIndex + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? items.length - 3 : prevIndex - 1));
-  };
-
+function Carousel({
+  items, prevSlide, nextSlide, currentIndex,
+}) {
   const visibleItems = items.slice(currentIndex, currentIndex + 3);
 
   return (
@@ -84,6 +76,9 @@ Carousel.propTypes = {
       imageUrl: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  prevSlide: PropTypes.func.isRequired,
+  nextSlide: PropTypes.func.isRequired,
+  currentIndex: PropTypes.number.isRequired,
 };
 
 export default Carousel;

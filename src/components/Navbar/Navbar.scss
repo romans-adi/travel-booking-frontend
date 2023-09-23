@@ -1,0 +1,146 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/colors.scss';
+
+.nav-links {
+  @include center-column;
+
+  transform: translateY(-120%);
+  transition: all 0.5s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+
+  .logo-container {
+    @include center;
+
+    height: 100px;
+    overflow: hidden;
+
+    .logo-image {
+      height: 200px;
+      margin-top: 12px;
+    }
+  }
+
+  .social-icons {
+    i {
+      margin: 12px;
+    }
+  }
+
+  .navigation {
+    @include center-column;
+
+    width: 100%;
+
+    a {
+      @include center;
+
+      width: 90%;
+      height: 50px;
+      font-weight: bold;
+    }
+
+    a:hover {
+      background-color: $primary-color-opacity;
+    }
+
+    .active {
+      background-color: $primary-color;
+      color: $white;
+    }
+  }
+}
+
+.nav-links.show {
+  @include center-column;
+
+  justify-content: space-around;
+  background-color: $white;
+  transform: translateY(0%);
+  width: 100%;
+}
+
+.burger-icon {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 25px;
+  width: 25px;
+  top: 24px;
+  left: 24px;
+  cursor: pointer;
+
+  .burger-bar {
+    height: 5px;
+    width: 100%;
+    background-color: black;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+.close-button {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  z-index: 1000;
+  margin-top: 24px;
+  margin-left: 24px;
+
+  .close-bar {
+    transition: all 0.5s ease-in-out;
+    height: 3px;
+    width: 100%;
+  }
+
+  .close-bar:nth-child(1) {
+    background-color: red;
+    transform: rotate(45deg);
+  }
+
+  .close-bar:nth-child(2) {
+    background-color: red;
+    transform: translateY(-100%) rotate(-45deg);
+  }
+}
+
+@media (min-width: 768px) {
+  #navpanel-container {
+    position: absolute;
+  }
+
+  #navpanel-container.show {
+    position: static;
+  }
+
+  .navigation {
+    a {
+      margin-left: 10%;
+    }
+  }
+
+  .nav-links {
+    transform: translateY(0%) translateX(-120%);
+    display: flex;
+    position: static;
+    height: 100vh;
+    justify-content: space-around;
+    width: 100%;
+    padding: 24px 0;
+  }
+
+  .nav-links.show {
+    transform: translateX(0%);
+    display: flex;
+    position: static;
+    height: 100vh;
+    justify-content: space-around;
+    min-width: 250px;
+    transition: all 0.5s ease-in-out;
+  }
+}
