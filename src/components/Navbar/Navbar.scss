@@ -37,11 +37,10 @@
     width: 100%;
 
     a {
-      margin-top: 12px;
-      margin-bottom: 12px;
+      @include center;
       width: 90%;
-      text-align: center;
-      padding: 5px 24px;
+      height: 50px;
+      font-weight: bold;
     }
 
     a:hover {
