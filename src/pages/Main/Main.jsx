@@ -125,8 +125,8 @@ function Main() {
 
   if (isMobile) {
     return (
-      <div className="min-h-screen bg-gray-100 justify-center flex flex-col items-center text-center relative w-100">
-        <header className="flex flex-col items-center text-center mt-10">
+      <div className="min-h-screen bg-gray-100 justify-center flex flex-col items-center text-center relative w-full">
+        <header className="flex flex-col items-center text-center mt-20 md:mt-10">
           <h1 className="text-4xl font-bold">Most Popular Tours</h1>
           <p className="text-gray-400 font-bold mt-4 relative flex items-center pb-10 mb-10">
             Please select Your Destination

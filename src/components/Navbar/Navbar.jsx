@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <div id="navpanel-container" className={showMenu ? '' : 'show'}>
+    <div id="navpanel-container" className={showMenu ? '' : 'show z-40'}>
       <button
         onClick={handleMenu}
         type="button"

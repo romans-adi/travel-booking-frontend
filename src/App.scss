@@ -6,3 +6,8 @@
 @import 'styles/mixins';
 @import 'styles/colors';
 @import 'styles/variables';
+
+.App {
+  display: flex;
+  width: 100%;
+}
