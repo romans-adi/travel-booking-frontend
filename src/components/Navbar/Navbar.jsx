@@ -34,7 +34,10 @@ const Navbar = () => {
           <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/deleteTravel" onClick={handleMenu}>DELETE TRAVEL</NavLink>
         </li>
         <li className="social-icons">
-          FB TWITTER ETC
+          <i className="fa-brands fa-twitter" />
+          <i className="fa-brands fa-facebook-f" />
+          <i className="fa-brands fa-google" />
+          <i className="fa-brands fa-pinterest-p" />
         </li>
       </ul>
     </div>
