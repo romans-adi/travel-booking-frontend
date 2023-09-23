@@ -1,8 +1,8 @@
 import React from 'react';
-import './MyTravels.scss';
+import './MyBooking.scss';
 
 const MyTravels = () => (
-  <div id="my-travels-title">MY TRAVELS</div>
+  <div id="my-travels-title">MY BOOKING</div>
 );
 
 export default MyTravels;

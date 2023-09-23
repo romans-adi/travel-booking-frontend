@@ -27,11 +27,11 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li className="navigation">
-          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/travels" onClick={handleMenu}>TRAVELS</NavLink>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/tours" onClick={handleMenu}>TOURS</NavLink>
           <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/reservation" onClick={handleMenu}>RESERVATION</NavLink>
-          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/mytravels" onClick={handleMenu}>MY TRAVELS</NavLink>
-          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/addtravel" onClick={handleMenu}>ADD TRAVEL</NavLink>
-          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/deleteTravel" onClick={handleMenu}>DELETE TRAVEL</NavLink>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/mybooking" onClick={handleMenu}>MY BOOKING</NavLink>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/booktravel" onClick={handleMenu}>BOOK TRAVEL</NavLink>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/removetravel" onClick={handleMenu}>REMOVE TRAVEL</NavLink>
         </li>
         <li className="social-icons">
           <i className="fa-brands fa-twitter" />

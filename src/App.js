@@ -3,11 +3,11 @@ import React from 'react';
 import './App.scss';
 import Home from './pages/Home/Home';
 import Navbar from './components/Navbar/Navbar';
-import Travels from './pages/Travels/Travels';
+import Tours from './pages/Tours/Tours';
 import Reservation from './pages/Reservation/Reservation';
-import MyTravels from './pages/MyTravels/MyTravels';
-import AddTravel from './pages/AddTravel/AddTravel';
-import DeleteTravel from './pages/DeleteTravel/DeleteTravel';
+import MyBooking from './pages/MyBooking/MyBooking';
+import BookTravel from './pages/BookTravel/BookTravel';
+import RemoveTravel from './pages/RemoveTravel/RemoveTravel';
 
 function App() {
   return (
@@ -16,11 +16,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/travels" element={<Travels />} />
+          <Route path="/tours" element={<Tours />} />
           <Route path="/reservation" element={<Reservation />} />
-          <Route path="/mytravels" element={<MyTravels />} />
-          <Route path="/addtravel" element={<AddTravel />} />
-          <Route path="/deletetravel" element={<DeleteTravel />} />
+          <Route path="/myBooking" element={<MyBooking />} />
+          <Route path="/booktravel" element={<BookTravel />} />
+          <Route path="/removetravel" element={<RemoveTravel />} />
         </Routes>
       </Router>
     </div>
