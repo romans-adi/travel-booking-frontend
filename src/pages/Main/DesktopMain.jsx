@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Carousel from '../../components/Menu/Carousel';
+import Carousel from '../../components/Menu/Carousel/Carousel';
 import MainHeader from './MainHeader';
 import { itemsWithTravelTypePropTypes } from './prop-types';
 

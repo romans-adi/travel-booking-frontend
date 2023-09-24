@@ -1,6 +1,5 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React, {
-  useState, useEffect, useCallback,
+  useState, useEffect,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -10,9 +9,7 @@ import MobileMain from './MobileMain';
 import DesktopMain from './DesktopMain';
 
 function Main() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [itemsToShow, setItemsToShow] = useState(6);
-  const [itemsToLoad] = useState(3);
+  const [isMobile] = useState(window.innerWidth < 768);
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.tours?.loading);
   const tourData = useSelector((state) => state.tours.data);
@@ -29,18 +26,6 @@ function Main() {
     return travelItem ? travelItem.travel_type : '';
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? tourData.length - 3 : prevIndex - 1));
   };
@@ -48,27 +33,6 @@ function Main() {
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex === tourData.length - 3 ? 0 : prevIndex + 1));
   };
-
-  const loadMoreItems = useCallback(() => {
-    setItemsToShow((prevItemsToShow) => prevItemsToShow + itemsToLoad);
-  }, [itemsToLoad]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (
-        window.innerHeight + window.scrollY
-        >= document.body.offsetHeight - 100
-      ) {
-        loadMoreItems();
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [loadMoreItems]);
 
   const itemsWithTravelType = tourData.map((tour) => ({
     ...tour,
@@ -89,7 +53,6 @@ function Main() {
     return (
       <MobileMain
         tourData={tourData}
-        itemsToShow={itemsToShow}
         getTravelTypeForTour={getTravelTypeForTour}
       />
     );
