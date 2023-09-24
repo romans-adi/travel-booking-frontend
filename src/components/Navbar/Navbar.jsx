@@ -11,11 +11,12 @@ const Navbar = () => {
   };
 
   return (
-    <div id="navpanel-container" className={showMenu ? '' : 'show'}>
+    <div id="navpanel-container" className={showMenu ? '' : 'show z-40'}>
       <button
         onClick={handleMenu}
         type="button"
         className={showMenu ? 'burger-icon' : 'close-button'}
+        style={{ zIndex: 100 }}
       >
         <div className={showMenu ? 'burger-bar' : 'close-bar'} />
         <div className={showMenu ? 'burger-bar' : 'close-bar'} />

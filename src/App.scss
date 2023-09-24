@@ -1,4 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import 'styles/reset';
 @import 'styles/mixins';
 @import 'styles/colors';
 @import 'styles/variables';
+
+.App {
+  display: flex;
+  width: 100%;
+}
