@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import TravelTypeIcons from './TravelTypesIcons';
+import '../../App.scss';
 
 function Carousel({
   items, prevSlide, nextSlide, currentIndex,
@@ -20,7 +21,7 @@ function Carousel({
     setTimeout(() => {
       setShowExtraCard(false);
       prevSlide();
-    }, 22);
+    }, 0);
   };
 
   const handleNextSlide = () => {
@@ -28,7 +29,7 @@ function Carousel({
     setTimeout(() => {
       setShowExtraCard(false);
       nextSlide();
-    }, 22);
+    }, 0);
   };
 
   return (
@@ -40,7 +41,7 @@ function Carousel({
               <CSSTransition
                 key={item.id}
                 classNames="carousel-card"
-                timeout={2}
+                timeout={900}
                 unmountOnExit
               >
                 {index === 2 && showExtraCard ? (
