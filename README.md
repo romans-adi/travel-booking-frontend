@@ -100,7 +100,7 @@ Follow these steps to use the Traveli:
 2. Backend Server Check: Make sure your Rails backend is up and running. You can verify its accessibility by opening your web browser and navigating to the following URL:
 
 ```
-http://localhost:3000/api
+http://localhost:3000/api/v1/places
 ```
 
 This URL should display the backend's response (random greeting message).

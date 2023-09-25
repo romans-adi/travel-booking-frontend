@@ -11,6 +11,29 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
   }
 });
 
+export const createReservation = createAsyncThunk(
+  'reservations/createReservation',
+  async ({
+    dateOfReservation, city, userId, travelId,
+  }) => {
+    try {
+      const response = await axios.post('http://localhost:3000/api/v1/reservations', {
+        reservation: {
+          date_of_reservation: dateOfReservation,
+          city,
+          user_id: userId,
+          travel_id: travelId,
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error('API Error:', error);
+      throw error;
+    }
+  },
+);
+
 const initialState = {
   data: [],
   loading: false,
