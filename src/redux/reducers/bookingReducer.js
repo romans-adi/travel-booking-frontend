@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchReservations = createAsyncThunk('reservations/fetchReservations', async () => {
+export const fetchBookings = createAsyncThunk('bookings/fetchBookings', async () => {
   try {
     const response = await axios.get('http://localhost:3000/api/v1/reservations');
     return response.data;
@@ -11,15 +11,15 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
   }
 });
 
-export const createReservation = createAsyncThunk(
-  'reservations/createReservation',
+export const createBooking = createAsyncThunk(
+  'bookings/createBooking',
   async ({
-    dateOfReservation, city, userId, travelId,
+    dateOfBooking, city, userId, travelId,
   }) => {
     try {
       const response = await axios.post('http://localhost:3000/api/v1/reservations', {
-        reservation: {
-          date_of_reservation: dateOfReservation,
+        booking: {
+          date_of_booking: dateOfBooking,
           city,
           user_id: userId,
           travel_id: travelId,
@@ -40,23 +40,23 @@ const initialState = {
   error: null,
 };
 
-const reservationsSlice = createSlice({
-  name: 'reservations',
+const bookingsSlice = createSlice({
+  name: 'bookings',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchReservations.pending, (state) => ({
+      .addCase(fetchBookings.pending, (state) => ({
         ...state,
         loading: true,
         error: null,
       }))
-      .addCase(fetchReservations.fulfilled, (state, action) => ({
+      .addCase(fetchBookings.fulfilled, (state, action) => ({
         ...state,
         loading: false,
         data: action.payload,
       }))
-      .addCase(fetchReservations.rejected, (state, action) => ({
+      .addCase(fetchBookings.rejected, (state, action) => ({
         ...state,
         loading: false,
         error: action.error.message,
@@ -64,4 +64,4 @@ const reservationsSlice = createSlice({
   },
 });
 
-export default reservationsSlice.reducer;
+export default bookingsSlice.reducer;
