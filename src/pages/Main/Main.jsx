@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { fetchTours } from '../../redux/reducers/toursReducer';
+import { fetchPlaces } from '../../redux/reducers/placesReducer';
 import { fetchTravels } from '../../redux/reducers/travelsReducer';
 import MobileMain from './MobileMain';
 import DesktopMain from './DesktopMain';
@@ -11,32 +11,32 @@ import DesktopMain from './DesktopMain';
 function Main() {
   const [isMobile] = useState(window.innerWidth < 768);
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.tours?.loading);
-  const tourData = useSelector((state) => state.tours.data);
+  const loading = useSelector((state) => state.places?.loading);
+  const placeData = useSelector((state) => state.places.data);
   const travelsData = useSelector((state) => state.travels?.data);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    dispatch(fetchTours());
+    dispatch(fetchPlaces());
     dispatch(fetchTravels());
   }, [dispatch]);
 
-  const getTravelTypeForTour = (tourId) => {
-    const travelItem = travelsData.find((travel) => travel.place_id === tourId);
+  const getTravelTypeForPlace = (placeId) => {
+    const travelItem = travelsData.find((travel) => travel.place_id === placeId);
     return travelItem ? travelItem.travel_type : '';
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? tourData.length - 3 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? placeData.length - 3 : prevIndex - 1));
   };
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === tourData.length - 3 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (prevIndex === placeData.length - 3 ? 0 : prevIndex + 1));
   };
 
-  const itemsWithTravelType = tourData.map((tour) => ({
-    ...tour,
-    travelType: getTravelTypeForTour(tour.id),
+  const itemsWithTravelType = placeData.map((place) => ({
+    ...place,
+    travelType: getTravelTypeForPlace(place.id),
   }));
 
   if (loading) {
@@ -52,8 +52,8 @@ function Main() {
   if (isMobile) {
     return (
       <MobileMain
-        tourData={tourData}
-        getTravelTypeForTour={getTravelTypeForTour}
+        placeData={placeData}
+        getTravelTypeForPlace={getTravelTypeForPlace}
       />
     );
   }

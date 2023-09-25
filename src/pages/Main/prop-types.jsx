@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const tourPropTypes = PropTypes.shape({
+export const placePropTypes = PropTypes.shape({
   id: PropTypes.number,
   name: PropTypes.string,
   description: PropTypes.string,

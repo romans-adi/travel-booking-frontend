@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import toursReducer from './reducers/toursReducer';
+import placesReducer from './reducers/placesReducer';
 import travelsReducer from './reducers/travelsReducer';
 
 const store = configureStore({
   reducer: {
-    tours: toursReducer,
+    places: placesReducer,
     travels: travelsReducer,
   },
 });

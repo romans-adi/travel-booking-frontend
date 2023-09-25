@@ -2,24 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TravelTypeIcons from './Icons/TravelTypesIcons';
 
-function Item({ tour, travelType }) {
+function Item({ place, travelType }) {
   return (
     <div className="md:w-96 items-center text-center">
       <div
         className="w-full h-52 rounded-lg bg-cover bg-center"
         style={{
-          backgroundImage: `url(${tour.main_picture})`,
+          backgroundImage: `url(${place.main_picture})`,
         }}
       />
-      <h2 className="text-xl font-semibold mt-4">{tour.name}</h2>
-      <p className="text-gray-500">{tour.description}</p>
+      <h2 className="text-xl font-semibold mt-4">{place.name}</h2>
+      <p className="text-gray-500">{place.description}</p>
       <TravelTypeIcons travelType={travelType} />
     </div>
   );
 }
 
 Item.propTypes = {
-  tour: PropTypes.shape({
+  place: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
