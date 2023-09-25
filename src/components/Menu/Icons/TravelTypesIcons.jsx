@@ -25,7 +25,11 @@ function TravelTypeIcons({ travelType }) {
 }
 
 TravelTypeIcons.propTypes = {
-  travelType: PropTypes.string.isRequired,
+  travelType: PropTypes.string,
+};
+
+TravelTypeIcons.defaultProps = {
+  travelType: 'cultural',
 };
 
 export default TravelTypeIcons;

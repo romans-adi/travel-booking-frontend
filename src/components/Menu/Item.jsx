@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TravelTypeIcons from './TravelTypesIcons';
+import TravelTypeIcons from './Icons/TravelTypesIcons';
 
 function Item({ tour, travelType }) {
   return (
@@ -24,9 +24,13 @@ Item.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     main_picture: PropTypes.string.isRequired,
-    travel_type: PropTypes.string.isRequired,
+    travel_type: PropTypes.string,
   }).isRequired,
-  travelType: PropTypes.string.isRequired,
+  travelType: PropTypes.string,
+};
+
+Item.defaultProps = {
+  travelType: 'cultural',
 };
 
 export default Item;

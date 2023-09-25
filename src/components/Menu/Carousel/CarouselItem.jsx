@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import TravelTypeIcons from '../TravelTypesIcons';
+import TravelTypeIcons from '../Icons/TravelTypesIcons';
 
 function CarouselItem({ item }) {
   return (

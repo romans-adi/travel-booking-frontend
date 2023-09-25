@@ -19,7 +19,7 @@ function Main() {
   useEffect(() => {
     dispatch(fetchTours());
     dispatch(fetchTravels());
-  }, []);
+  }, [dispatch]);
 
   const getTravelTypeForTour = (tourId) => {
     const travelItem = travelsData.find((travel) => travel.place_id === tourId);

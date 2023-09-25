@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import CarouselItem from './CarouselItem';
-import TravelTypeIcons from '../TravelTypesIcons';
+import TravelTypeIcons from '../Icons/TravelTypesIcons';
 
 function CarouselItemsSection({ items, showExtraCard }) {
   return (

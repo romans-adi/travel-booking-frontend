@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function CarouselControls({ handlePrevSlide, handleNextSlide }) {
+function CarouselControls({
+  handlePrevSlide, handleNextSlide, isNextArrowClicked, isPrevArrowClicked,
+}) {
   return (
     <div className="carousel-controls">
       <button
         type="button"
-        className="carousel-control prev rounded-r-full h-14 w-20 bg-gray-300 hover:bg-main text-white left-0 absolute top-1/2 transform -translate-y-1/2 outline-none transition duration-700 ease-in-out"
+        className={`carousel-control prev rounded-r-full h-14 w-20 ${
+          isPrevArrowClicked ? 'bg-main' : 'bg-gray-300'
+        } hover:bg-main text-white left-0 absolute top-1/2 transform -translate-y-1/2 outline-none transition duration-700 ease-in-out`}
         onClick={handlePrevSlide}
       >
         <svg
@@ -23,7 +27,7 @@ function CarouselControls({ handlePrevSlide, handleNextSlide }) {
       </button>
       <button
         type="button"
-        className="carousel-control next rounded-l-full h-14 w-20 bg-gray-300 hover:bg-main text-white text-2xl right-0 absolute top-1/2 transform -translate-y-1/2 outline-none transition duration-700 ease-in-out"
+        className={`carousel-control next rounded-l-full h-14 w-20 hover:bg-main ${isNextArrowClicked ? 'bg-main' : 'bg-gray-300'} text-white text-2xl right-0 absolute top-1/2 transform -translate-y-1/2 outline-none transition duration-700 ease-in-out`}
         onClick={handleNextSlide}
       >
         <svg
@@ -45,6 +49,8 @@ function CarouselControls({ handlePrevSlide, handleNextSlide }) {
 CarouselControls.propTypes = {
   handlePrevSlide: PropTypes.func.isRequired,
   handleNextSlide: PropTypes.func.isRequired,
+  isPrevArrowClicked: PropTypes.bool.isRequired,
+  isNextArrowClicked: PropTypes.bool.isRequired,
 };
 
 export default CarouselControls;
