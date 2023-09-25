@@ -18,7 +18,7 @@ export const createBooking = createAsyncThunk(
   }) => {
     try {
       const response = await axios.post('http://localhost:3000/api/v1/reservations', {
-        booking: {
+        reservation: {
           date_of_booking: dateOfBooking,
           city,
           user_id: userId,
