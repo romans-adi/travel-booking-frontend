@@ -34,7 +34,7 @@ function ReservationsList() {
     >
       <div className="bg-opacity-60 bg-lime-800 z-20 absolute inset-0" />
       <div className="mx-auto w-full justify-center items-center z-40 flex flex-col h-screen">
-        <h2 className="text-4xl font-bold text-white text-center pb-8 w-3/5 border-b-2-white my-10">All Bookings</h2>
+        <h2 className="text-4xl font-bold text-white text-center pb-8 w-3/5 border-b-2-white my-10">My Reservations</h2>
         {loading && <p className="text-white">Loading...</p>}
         {error && (
           <p className="text-white">
