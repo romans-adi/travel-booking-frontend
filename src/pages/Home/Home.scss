@@ -38,6 +38,11 @@
       margin: 5px;
     }
 
+    .slide-show-dot:hover {
+      background-color: #7bcd0056;
+      cursor: pointer;
+    }
+
     .active-dot {
       background-color: $primary-color;
       border-radius: 100%;
