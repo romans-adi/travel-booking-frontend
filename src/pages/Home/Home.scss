@@ -27,7 +27,6 @@
 
   .slide-show-dots {
     @include center-column;
-
     justify-content: space-around;
     padding: 5px;
     position: absolute;
@@ -40,11 +39,6 @@
       width: 10px;
       background-color: $white;
       margin: 5px;
-    }
-
-    .slide-show-dot:hover {
-      background-color: #7bcd0056;
-      cursor: pointer;
     }
 
     .active-dot {
