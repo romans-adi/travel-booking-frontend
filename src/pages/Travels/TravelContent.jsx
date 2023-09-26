@@ -17,7 +17,7 @@ function validateObject(props, propName, componentName) {
 
 function TravelContent({ selectedTravel, selectedPlace, randomPlaceImages }) {
   return (
-    <div className="flex items-stretch mx-auto h-screen w-full pl-16 pr-8 gap-16 pb-40 py-40 relative justify-center flex-wrap lg:flex-nowrap">
+    <div className="flex items-stretch mx-auto h-96 md:h-screen w-full pl-16 pr-8 gap-16 pt-20 lg:pb-40 lg:py-40 relative justify-center flex-wrap lg:flex-nowrap">
       <img
         src={selectedPlace?.main_picture}
         alt={selectedPlace?.name}
