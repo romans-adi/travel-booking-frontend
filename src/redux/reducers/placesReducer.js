@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchTours = createAsyncThunk('tours/fetchTours', async () => {
+export const fetchPlaces = createAsyncThunk('places/fetchPlaces', async () => {
   try {
     const response = await axios.get('http://localhost:3000/api/v1/places');
     return response.data;
@@ -17,23 +17,23 @@ const initialState = {
   error: null,
 };
 
-const toursSlice = createSlice({
-  name: 'tours',
+const placesSlice = createSlice({
+  name: 'places',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchTours.pending, (state) => ({
+      .addCase(fetchPlaces.pending, (state) => ({
         ...state,
         loading: true,
         error: null,
       }))
-      .addCase(fetchTours.fulfilled, (state, action) => ({
+      .addCase(fetchPlaces.fulfilled, (state, action) => ({
         ...state,
         loading: false,
         data: action.payload,
       }))
-      .addCase(fetchTours.rejected, (state, action) => ({
+      .addCase(fetchPlaces.rejected, (state, action) => ({
         ...state,
         loading: false,
         error: action.error.message,
@@ -41,4 +41,4 @@ const toursSlice = createSlice({
   },
 });
 
-export default toursSlice.reducer;
+export default placesSlice.reducer;

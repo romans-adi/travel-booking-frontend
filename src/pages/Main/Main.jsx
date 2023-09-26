@@ -1,43 +1,70 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import React, { useEffect } from 'react';
+import React, {
+  useState, useEffect,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { Link } from 'react-router-dom';
-import { fetchTours } from '../../redux/reducers/toursReducer';
+import { fetchPlaces } from '../../redux/reducers/placesReducer';
 import { fetchTravels } from '../../redux/reducers/travelsReducer';
+import MobileMain from './MobileMain';
+import DesktopMain from './DesktopMain';
 
 function Main() {
+  const [isMobile] = useState(window.innerWidth < 768);
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.tours?.loading);
-  const tourData = useSelector((state) => state.tours.data);
+  const loading = useSelector((state) => state.places?.loading);
+  const placeData = useSelector((state) => state.places.data);
+  const travelsData = useSelector((state) => state.travels?.data);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    dispatch(fetchTours());
+    dispatch(fetchPlaces());
     dispatch(fetchTravels());
   }, [dispatch]);
+
+  const getTravelTypeForPlace = (placeId) => {
+    const travelItem = travelsData.find((travel) => travel.place_id === placeId);
+    return travelItem ? travelItem.travel_type : '';
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? placeData.length - 3 : prevIndex - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === placeData.length - 3 ? 0 : prevIndex + 1));
+  };
+
+  const itemsWithTravelType = placeData.map((place) => ({
+    ...place,
+    travelType: getTravelTypeForPlace(place.id),
+  }));
 
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-100 justify-center flex flex-col items-center text-center relative w-full flex-1">
+        {' '}
         <ClipLoader size="50" />
+        ;
       </div>
     );
   }
 
+  if (isMobile) {
+    return (
+      <MobileMain
+        placeData={placeData}
+        getTravelTypeForPlace={getTravelTypeForPlace}
+      />
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gray-100 justify-center flex flex-col items-center text-center relative w-full flex-1">
-      <h1 className="text-4xl font-bold">Most Popular Tours</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {tourData.map((tour) => (
-          <Link to={`/travel/${tour.id}`} key={tour.id} className="hover:underline">
-            <div className="border rounded p-4">
-              <h2 className="text-xl font-semibold">{tour.name}</h2>
-              <p className="text-gray-500">{tour.description}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </div>
+    <DesktopMain
+      itemsWithTravelType={itemsWithTravelType}
+      currentIndex={currentIndex}
+      prevSlide={prevSlide}
+      nextSlide={nextSlide}
+    />
   );
 }
 

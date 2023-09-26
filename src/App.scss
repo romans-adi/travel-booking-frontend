@@ -11,3 +11,27 @@
   display: flex;
   width: 100%;
 }
+
+.carousel-card-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.carousel-card-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 1440ms, transform 500ms;
+}
+
+.carousel-card-exit {
+  opacity: 0;
+  transform: scale(1);
+  display: none;
+  transition: opacity 200ms;
+}
+
+.carousel-card-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 900ms, transform 500ms;
+}
