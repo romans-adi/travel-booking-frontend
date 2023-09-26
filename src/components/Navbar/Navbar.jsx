@@ -4,7 +4,7 @@ import './Navbar.scss';
 import Logo from '../../assets/Images/logo.png';
 
 const Navbar = () => {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
 
   const handleMenu = () => {
     setShowMenu((prevShowMenu) => !prevShowMenu);

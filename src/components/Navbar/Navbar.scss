@@ -1,6 +1,10 @@
 @import '../../styles/mixins.scss';
 @import '../../styles/colors.scss';
 
+#navpanel-container {
+  z-index: 10000;
+}
+
 .nav-links {
   @include center-column;
 
@@ -78,7 +82,7 @@
   .burger-bar {
     height: 5px;
     width: 100%;
-    background-color: black;
+    background-color: $white;
     transition: all 0.5s ease-in-out;
   }
 }
