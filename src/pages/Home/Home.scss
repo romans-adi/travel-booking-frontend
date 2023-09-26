@@ -8,6 +8,7 @@
   position: relative;
 
   @include center-column;
+
   justify-content: flex-start;
 
   #home-title {
@@ -25,6 +26,7 @@
 
   .slide-show-dots {
     @include center-column;
+
     justify-content: space-around;
     padding: 5px;
     position: absolute;
@@ -111,7 +113,7 @@
     .slide-show-dots {
       top: 80%;
       bottom: 24px;
-      
+
       .slide-show-dot:hover {
         background-color: #7bcd0056;
         cursor: pointer;
@@ -139,7 +141,7 @@
 
   #home-container:hover {
     .home-slider-container {
-      transform: scale(1.2);
+      transform: scale(1.1);
       filter: brightness(0.3);
     }
   }
