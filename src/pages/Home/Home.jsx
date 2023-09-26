@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import './Home.scss';
 import HomeSlider from '../../components/HomeSlider/HomeSlider';
-import sliderOne from '../../assets/Images/slide_1.svg';
-import sliderTwo from '../../assets/Images/slide_2.svg';
-import sliderThree from '../../assets/Images/slide_3.svg';
-import sliderFour from '../../assets/Images/slide_4.svg';
-import sliderFive from '../../assets/Images/slide_5.svg';
+import sliderOne from '../../assets/Images/slide_1.png';
+import sliderTwo from '../../assets/Images/slide_2.png';
+import sliderThree from '../../assets/Images/slide_3.png';
+import sliderFour from '../../assets/Images/slide_4.png';
+import sliderFive from '../../assets/Images/slide_5.png';
 
 const imagesArray = [sliderOne, sliderTwo, sliderThree, sliderFour, sliderFive];
 
