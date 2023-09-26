@@ -54,7 +54,7 @@ function Bookings() {
         zIndex: '1',
       }}
     >
-      <div className="bg-opacity-80 bg-main z-20 absolute inset-0" />
+      <div className="bg-opacity-80 bg-lime-600 z-20 absolute inset-0" />
       <div className="mx-auto relative w-full z-40 justify-center items-center flex flex-col">
         {reservationCreated ? (
           <BookingSuccess
@@ -64,7 +64,7 @@ function Bookings() {
           />
         ) : (
           <>
-            <h2 className="text-4xl font-bold text-white mb-4 text-center">Book your Travel!</h2>
+            <h2 className="text-4xl font-bold text-white mb-4 text-center pb-8 w-3/5 border-b-2-white">Book your Travel!</h2>
             <p className="text-sm font-semibold text-white my-4 mb-10 text-center w-3/4 items-center justify-center leading-8">
               Explore our curated list of incredible destinations and create lasting memories.
               Whether yo&apos;re a solo adventurer, a couple seeking romance, or a
