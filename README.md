@@ -137,13 +137,7 @@ http://localhost:3001
 - GitHub: [@romans-adi](https://github.com/romans-adi/)
 - LinkedIn: [Romans Špiļaks](https://www.linkedin.com/in/obj513/)
 
-👤 **Mohamed Gamil Eldimardash**
-
-- GitHub: [@github](https://github.com/MMGGYY66)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/mohamed-eldimardash-0023a3b5/)
-- Twitter: [twitter](https://twitter.com/MOHAMEDELDIMARd)
-- Facebook: [facebook](https://www.facebook.com/MOHAMED.ELDIMARDASH/)
-- StackOverflow: [stackoverflow](https://stackoverflow.com/users/13605630/mohamed-gamil-eldimardash)
+- We extend our special thanks to [Mohamed Gamil Eldimardash](https://github.com/MMGGYY66) for his valuable contributions to the initial stages of our project, where he played a crucial role in creating models and establishing relations in the backend.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
