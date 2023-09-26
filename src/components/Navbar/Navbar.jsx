@@ -11,11 +11,12 @@ const Navbar = () => {
   };
 
   return (
-    <div id="navpanel-container" className={showMenu ? '' : 'show'}>
+    <div id="navpanel-container" className={showMenu ? '' : 'show z-40'}>
       <button
         onClick={handleMenu}
         type="button"
         className={showMenu ? 'burger-icon' : 'close-button'}
+        style={{ zIndex: 100 }}
       >
         <div className={showMenu ? 'burger-bar' : 'close-bar'} />
         <div className={showMenu ? 'burger-bar' : 'close-bar'} />
@@ -27,7 +28,7 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li className="navigation">
-          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/tours" onClick={handleMenu}>TOURS</NavLink>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/places" onClick={handleMenu}>PLACES</NavLink>
           <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/reservation" onClick={handleMenu}>RESERVATION</NavLink>
           <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/mybooking" onClick={handleMenu}>MY BOOKING</NavLink>
           <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/booktravel" onClick={handleMenu}>BOOK TRAVEL</NavLink>
