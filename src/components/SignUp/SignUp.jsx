@@ -1,11 +1,18 @@
-// SignUp.js
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import './SignUp.scss';
-import { BiSolidUserCircle, BiSolidKey } from 'react-icons/bi';
+import { BiSolidUserCircle, BiSolidKey, BiLogoGmail } from 'react-icons/bi';
+import { useForm } from 'react-hook-form';
+import { registerUser } from '../../redux/reducers/auth/authActions';
 import sliderTwo from '../../assets/Images/slide_2.webp';
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   function closeSignUp() {
     const signUpContainer = document.getElementById('sign-up-container');
     signUpContainer.classList.toggle('active');
@@ -17,6 +24,18 @@ const SignUp = () => {
     closeSignUp();
   }
 
+  const onSubmit = (formData) => {
+    dispatch(registerUser(formData));
+    navigate('/');
+    closeSignUp();
+  };
+
+  const {
+    register,
+    handleSubmit,
+    getValues,
+  } = useForm();
+
   return (
     <div id="sign-up-container">
       <button type="button" id="close-sign-up" onClick={closeSignUp} aria-label="Close sign up form">
@@ -26,23 +45,48 @@ const SignUp = () => {
         <img src={sliderTwo} alt="slider" loading="lazy" />
       </div>
       <div id="log-in-form-container">
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="login-input-container">
             <BiSolidUserCircle className="input-icon" />
-            <input type="email" id="email" name="email" placeholder="Email" required />
+            <input
+              type="text"
+              id="name-input"
+              name="name"
+              placeholder="Full Name"
+              {...register('name', { required: true })}
+            />
           </div>
           <div className="login-input-container">
-            <BiSolidKey className="input-icon" />
-            <input type="password" id="password" name="password" placeholder="Password" required />
+            <BiLogoGmail className="input-icon" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              {...register('email', { required: true })}
+            />
           </div>
           <div className="login-input-container">
             <BiSolidKey className="input-icon" />
             <input
               type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              {...register('password', { required: true })}
+            />
+          </div>
+          <div className="login-input-container">
+            <BiSolidKey className="input-icon" />
+            <input
+              type="confirmPassword"
               id="confirmPassword"
               name="confirmPassword"
               placeholder="Confirm Password"
-              required
+              {...register('password_confirmation', {
+                required: true,
+                validate: (value) => value === getValues('password'),
+              })}
             />
           </div>
           <button className="submit-button" type="submit">

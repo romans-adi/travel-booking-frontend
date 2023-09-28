@@ -1,8 +1,10 @@
-import axios from "axios";
-import { authRequest, authSuccess, authFailure, logout } from "./authSlice";
-import { toast } from "react-hot-toast";
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+import {
+  authRequest, authSuccess, authFailure, logout,
+} from './authSlice';
 
-const apiURL = 'http://localhost:3000/api/v1/places';
+const apiURL = 'http://localhost:3000';
 
 export const registerUser = (formData) => async (dispatch) => {
   dispatch(authRequest());
@@ -13,25 +15,26 @@ export const registerUser = (formData) => async (dispatch) => {
       { user: formData },
       {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      }
+      },
     );
 
     if (response.status === 200) {
       const token = response.headers.authorization;
       const user = response.data.data;
       dispatch(authSuccess({ token, user }));
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
       toast.success(`Welcome, ${user.name}`);
+      console.log(user);
     } else {
       throw new Error(response.statusText);
     }
   } catch (error) {
     dispatch(authFailure(error.message));
     toast.error(
-      "Registration failed. Please check your information and try again."
+      'Registration failed. Please check your information and try again.',
     );
   }
 };
@@ -45,20 +48,20 @@ export const loginUser = (formData) => async (dispatch) => {
       { user: formData },
       {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      }
+      },
     );
 
     if (response.status === 200) {
       const token = response.headers.authorization;
       const user = response.data.data;
       dispatch(authSuccess({ token, user }));
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
       toast.success(`Welcome, ${user.name}`);
     } else {
-      const errorResponse = response.data || "An error occurred.";
+      const errorResponse = response.data || 'An error occurred.';
       throw new Error(errorResponse);
     }
   } catch (error) {
@@ -70,11 +73,11 @@ export const loginUser = (formData) => async (dispatch) => {
 export const logoutUser = () => async (dispatch) => {
   try {
     dispatch(logout());
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    toast.success("Logged out successfully.");
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    toast.success('Logged out successfully.');
   } catch (error) {
     dispatch(authFailure(error.message));
-    toast.error("Logout failed. Please try again.");
+    toast.error('Logout failed. Please try again.');
   }
 };

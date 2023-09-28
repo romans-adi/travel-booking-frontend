@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './Home.scss';
 import HomeSlider from '../../components/HomeSlider/HomeSlider';
 import sliderOne from '../../assets/Images/slide_1.webp';
@@ -14,6 +15,8 @@ const imagesArray = [sliderOne, sliderTwo, sliderThree, sliderFour, sliderFive];
 
 const Home = () => {
   const [index, setIndex] = useState(0);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     const goToNextSlide = () => {
@@ -47,14 +50,17 @@ const Home = () => {
       <HomeSlider sliderImages={imagesArray} slideIndex={index} />
       <SignUp />
       <LogIn />
-      <h1 id="home-title">Your Dream Travel Agency</h1>
+      <h1 id="home-title">
+        {isAuthenticated ? `Wellcome to Traveli ${user.name} !` : 'Your dream travel agency.'}
+        {' '}
+      </h1>
       <p id="home-description">How do you want to start?</p>
       <button type="button" id="explore-button">
         <i className="fa-solid fa-magnifying-glass" />
         {' '}
         Explore Selected Places
       </button>
-      <div id="home-buttons">
+      <div id="home-buttons" style={isAuthenticated ? { display: 'none' } : {}}>
         <button type="button" id="sign-up-button" onClick={handleSignUp}>SIGNUP</button>
         <button type="button" id="log-in-button" onClick={handleLogIn}>LOGIN</button>
       </div>

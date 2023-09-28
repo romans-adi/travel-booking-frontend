@@ -17,9 +17,9 @@
     position: absolute;
     top: 24px;
     right: 24px;
+    color: red;
     &:hover {
       cursor: pointer;
-      color: red;
       transform: scale(1.1);
     }
   }
@@ -120,7 +120,7 @@
       border: 1px solid black;
 
       p {
-        font-size: 1.5rem;
+        font-size: 1rem;
         margin-top: 10%;
         }
 
@@ -138,13 +138,13 @@
         .login-input-container {
           width: 100%;
 
-          .input-icon {
-            width: 24px;
+          input {
+            width: 95%;
+            font-size: 1rem;
           }
 
-          input {
-            width: 90%;
-            font-size: 1.5rem;
+          .input-icon {
+           margin-left: 12px;
           }
         }
 
