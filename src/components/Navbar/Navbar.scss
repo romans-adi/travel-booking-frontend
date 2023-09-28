@@ -4,6 +4,7 @@
 #navpanel-container {
   z-index: 10000;
   position: relative;
+
   .logout-button {
     position: absolute;
     bottom: 24px;
@@ -123,7 +124,6 @@
     background-color: red;
     transform: translateY(-100%) rotate(-45deg);
   }
-
 }
 
 @media (min-width: 768px) {

@@ -18,6 +18,7 @@
     top: 24px;
     right: 24px;
     color: red;
+
     &:hover {
       cursor: pointer;
       transform: scale(1.1);
@@ -27,6 +28,7 @@
   #log-in-form-container { // Change ID selector to use log-in-form-container
     height: 100%;
     width: 100%;
+
     @include center-column;
   }
 
@@ -38,6 +40,7 @@
   #create-account-button { // Change ID selector to use create-account-button
     color: $primary-color-opacity;
     font-size: 1rem;
+
     &:hover {
       color: $primary-color;
     }
@@ -48,11 +51,13 @@
 
     .submit-button {
       @include secondary-button;
+
       margin-top: 2rem;
     }
 
     .login-input-container {
       @include center;
+
       border: 1px solid $gray;
       border-radius: 5px;
       height: 50px;
@@ -98,6 +103,7 @@
 @media (min-width: 768px) {
   #sign-up-container { // Change ID selector to use sign-up-container
     @include center;
+
     top: 10%;
     right: 10%;
     bottom: 10%;
@@ -122,11 +128,12 @@
       p {
         font-size: 1rem;
         margin-top: 10%;
-        }
+      }
 
       #log-in-button {
         color: $primary-color-opacity;
         font-size: 1.5rem;
+
         &:hover {
           color: $primary-color;
         }
@@ -144,7 +151,7 @@
           }
 
           .input-icon {
-           margin-left: 12px;
+            margin-left: 12px;
           }
         }
 
