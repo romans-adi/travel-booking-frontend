@@ -79,7 +79,7 @@ const SignUp = () => {
           <div className="login-input-container">
             <BiSolidKey className="input-icon" />
             <input
-              type="confirmPassword"
+              type="password"
               id="confirmPassword"
               name="confirmPassword"
               placeholder="Confirm Password"
