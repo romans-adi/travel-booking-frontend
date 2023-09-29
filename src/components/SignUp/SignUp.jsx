@@ -34,6 +34,7 @@ const SignUp = () => {
     register,
     handleSubmit,
     getValues,
+    formState: { errors }, // Access form errors
   } = useForm();
 
   return (
@@ -56,6 +57,7 @@ const SignUp = () => {
               {...register('name', { required: 'Name is required' })}
             />
           </div>
+          {errors.name && <p className="error-message">{`* ${errors.name.message}`}</p>}
           <div className="login-input-container">
             <BiLogoGmail className="input-icon" />
             <input
@@ -63,9 +65,16 @@ const SignUp = () => {
               id="email"
               name="email"
               placeholder="Email"
-              {...register('email', { required: 'Email is required' })}
+              {...register('email', {
+                required: 'Email is required',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Invalid email address',
+                },
+              })}
             />
           </div>
+          {errors.email && <p className="error-message">{`* ${errors.email.message}`}</p>}
           <div className="login-input-container">
             <BiSolidKey className="input-icon" />
             <input
@@ -76,6 +85,7 @@ const SignUp = () => {
               {...register('password', { required: 'Introduce your password' })}
             />
           </div>
+          {errors.password && <p className="error-message">{`* ${errors.password.message}`}</p>}
           <div className="login-input-container">
             <BiSolidKey className="input-icon" />
             <input
@@ -85,15 +95,18 @@ const SignUp = () => {
               placeholder="Confirm Password"
               {...register('password_confirmation', {
                 required: 'Confirm your password',
-                validate: (value) => value === getValues('password'),
+                validate: (value) => value === getValues('password') || 'Passwords do not match',
               })}
             />
           </div>
+          {errors.password_confirmation && (
+              <p className="error-message">{`* ${errors.password_confirmation.message}`}</p>
+            )}
           <button className="submit-button" type="submit">
             SIGN UP
           </button>
         </form>
-        <p>Already have an account? </p>
+        <p className="sign-up-text">Already have an account? </p>
         <button type="button" id="log-in-button" onClick={handleLogIn}>
           Log In
         </button>

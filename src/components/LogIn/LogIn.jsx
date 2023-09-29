@@ -5,13 +5,14 @@ import { FaTimes } from 'react-icons/fa';
 import './LogIn.scss';
 import { BiSolidUserCircle, BiSolidKey } from 'react-icons/bi';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import sliderOne from '../../assets/Images/slide_1.webp';
 import { loginUser } from '../../redux/reducers/auth/authActions';
 
 const LogIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const { register, handleSubmit } = useForm();
 
@@ -22,8 +23,10 @@ const LogIn = () => {
 
   const onSubmit = (formData) => {
     dispatch(loginUser(formData));
-    navigate('/');
-    closeLogIn();
+    if (isAuthenticated) {
+      navigate('/');
+      closeLogIn();
+    }
   };
 
   function handleSignUp() {

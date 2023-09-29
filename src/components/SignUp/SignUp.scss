@@ -86,6 +86,13 @@
     }
   }
 
+  .error-message {
+    color: red;
+    margin-top: -12px;
+    width: 100%;
+    text-align: left;
+  }
+
   #log-in-image-container { // Change ID selector to use log-in-image-container
     display: none;
   }
@@ -125,7 +132,7 @@
       height: 100%;
       border: 1px solid black;
 
-      p {
+      .sign-up-text {
         font-size: 1rem;
         margin-top: 10%;
       }
