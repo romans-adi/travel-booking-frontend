@@ -3,7 +3,17 @@ import axios from 'axios';
 
 export const fetchPlaces = createAsyncThunk('places/fetchPlaces', async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/v1/places');
+    const token = localStorage.getItem('token');
+
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    };
+
+    const response = await axios.get('http://localhost:3000/api/v1/places', {
+      headers,
+    });
+
     return response.data;
   } catch (error) {
     console.error('API Error:', error);

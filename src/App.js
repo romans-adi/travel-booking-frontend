@@ -23,6 +23,7 @@ function App() {
     const user = JSON.parse(localStorage.getItem('user'));
     if (token && user) {
       dispatch(authSuccess({ token, user }));
+      console.log(token);
     }
   });
 
