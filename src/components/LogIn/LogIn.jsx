@@ -13,10 +13,7 @@ const LogIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {
-    register,
-    handleSubmit,
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   function closeLogIn() {
     const logInContainer = document.getElementById('log-in-container');

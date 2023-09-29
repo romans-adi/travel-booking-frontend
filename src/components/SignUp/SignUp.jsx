@@ -53,7 +53,7 @@ const SignUp = () => {
               id="name-input"
               name="name"
               placeholder="Full Name"
-              {...register('name', { required: true })}
+              {...register('name', { required: 'Name is required' })}
             />
           </div>
           <div className="login-input-container">
@@ -63,7 +63,7 @@ const SignUp = () => {
               id="email"
               name="email"
               placeholder="Email"
-              {...register('email', { required: true })}
+              {...register('email', { required: 'Email is required' })}
             />
           </div>
           <div className="login-input-container">
@@ -73,7 +73,7 @@ const SignUp = () => {
               id="password"
               name="password"
               placeholder="Password"
-              {...register('password', { required: true })}
+              {...register('password', { required: 'Introduce your password' })}
             />
           </div>
           <div className="login-input-container">
@@ -84,7 +84,7 @@ const SignUp = () => {
               name="confirmPassword"
               placeholder="Confirm Password"
               {...register('password_confirmation', {
-                required: true,
+                required: 'Confirm your password',
                 validate: (value) => value === getValues('password'),
               })}
             />

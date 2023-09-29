@@ -36,6 +36,7 @@ export const registerUser = (formData) => async (dispatch) => {
     toast.error(
       'Registration failed. Please check your information and try again.',
     );
+    console.log(error.message);
   }
 };
 
