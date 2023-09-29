@@ -72,10 +72,20 @@ export const loginUser = (formData) => async (dispatch) => {
 
 export const logoutUser = () => async (dispatch) => {
   try {
-    dispatch(logout());
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    toast.success('Logged out successfully.');
+    const response = await axios.delete(`${apiURL}/logout`, {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
+
+    if (response.status === 200) {
+      dispatch(logout());
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      toast.success('Logged out successfully.');
+    } else {
+      throw new Error(response.statusText);
+    }
   } catch (error) {
     dispatch(authFailure(error.message));
     toast.error('Logout failed. Please try again.');
