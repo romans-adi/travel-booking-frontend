@@ -100,8 +100,8 @@ const SignUp = () => {
             />
           </div>
           {errors.password_confirmation && (
-              <p className="error-message">{`* ${errors.password_confirmation.message}`}</p>
-            )}
+          <p className="error-message">{`* ${errors.password_confirmation.message}`}</p>
+          )}
           <button className="submit-button" type="submit">
             SIGN UP
           </button>
