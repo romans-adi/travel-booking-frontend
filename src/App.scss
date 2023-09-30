@@ -35,3 +35,16 @@
   transform: scale(0.9);
   transition: opacity 900ms, transform 500ms;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.border-2-white {
+  border: 1px solid white;
+}
+
+.border-b-2-white {
+  border-bottom: 1px solid white;
+}
