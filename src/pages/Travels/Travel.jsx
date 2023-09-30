@@ -51,7 +51,7 @@ function Travel() {
   const selectedPlace = places.find((place) => place.id === selectedTravel.place_id);
 
   return (
-    <div className="w-100 mx-auto">
+    <div className="w-100 flex-1">
       <TravelContent
         selectedTravel={selectedTravel}
         selectedPlace={selectedPlace}

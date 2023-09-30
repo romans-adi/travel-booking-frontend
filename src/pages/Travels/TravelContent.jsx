@@ -8,25 +8,18 @@ function validateArray(props, propName, componentName) {
   return null;
 }
 
-function validateObject(props, propName, componentName) {
-  if (typeof props[propName] !== 'object' || Array.isArray(props[propName])) {
-    return new Error(`Invalid prop '${propName}' supplied to '${componentName}'. It should be an object.`);
-  }
-  return null;
-}
-
-function TravelContent({ selectedTravel, selectedPlace, randomPlaceImages }) {
+function TravelContent({ selectedTravel, randomPlaceImages }) {
   return (
-    <div className="flex items-stretch mx-auto h-96 md:h-screen w-full pl-16 pr-8 gap-16 pt-20 lg:pb-40 lg:py-40 relative justify-center flex-wrap lg:flex-nowrap">
+    <div className="flex items-stretch mx-auto h-96 md:h-screen w-full px-16 gap-16 pt-20 lg:pb-40 lg:py-40 relative justify-center flex-wrap lg:flex-nowrap">
       <img
-        src={selectedPlace?.main_picture}
-        alt={selectedPlace?.name}
-        className="w-full lg:w-2/3 max-h-full drop-shadow-4xl shadow-4xl"
+        src={selectedTravel?.image}
+        alt={selectedTravel?.name}
+        className="w-2/3 max-w-xl max-h-full drop-shadow-4xl shadow-4xl"
       />
       <div className="w-full lg:w-1/3 rounded-lg flex flex-col justify-between">
         <div>
           <h2 className="text-2xl font-semibold text-right uppercase">
-            {selectedPlace?.name}
+            {selectedTravel?.name}
             <br />
             <span className="font-semibold text-right lowercase text-red-600 text-xs">25% offer to new customers!</span>
           </h2>
@@ -118,13 +111,10 @@ TravelContent.propTypes = {
     price: PropTypes.number.isRequired,
     trip_duration: PropTypes.number.isRequired,
     group_size: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
   }).isRequired,
-  selectedPlace: validateObject,
   randomPlaceImages: validateArray,
-};
-
-TravelContent.defaultProps = {
-  selectedPlace: {},
 };
 
 TravelContent.defaultProps = {
