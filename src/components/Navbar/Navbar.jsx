@@ -29,9 +29,9 @@ const Navbar = () => {
         </li>
         <li className="navigation">
           <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/places" onClick={handleMenu}>PLACES</NavLink>
-          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/reservation" onClick={handleMenu}>RESERVATION</NavLink>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/reservations" onClick={handleMenu}>RESERVATIONS</NavLink>
           <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/mybooking" onClick={handleMenu}>MY BOOKING</NavLink>
-          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/booktravel" onClick={handleMenu}>BOOK TRAVEL</NavLink>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/booking" onClick={handleMenu}>BOOK TRAVEL</NavLink>
           <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/removetravel" onClick={handleMenu}>REMOVE TRAVEL</NavLink>
         </li>
         <li className="social-icons">
