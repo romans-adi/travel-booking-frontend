@@ -3,6 +3,19 @@
 
 #navpanel-container {
   z-index: 10000;
+  position: relative;
+
+  .logout-button {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+
+    &:hover {
+      cursor: pointer;
+      color: red;
+      transform: scale(1.1);
+    }
+  }
 }
 
 .nav-links {
@@ -115,11 +128,15 @@
 
 @media (min-width: 768px) {
   #navpanel-container {
-    position: absolute;
+    position: fixed;
+    height: 50px;
+    width: 50px;
   }
 
   #navpanel-container.show {
-    position: static;
+    position: fixed;
+    height: auto;
+    width: auto;
   }
 
   .navigation {
@@ -136,6 +153,10 @@
     justify-content: space-around;
     width: 100%;
     padding: 24px 0;
+    transition: all 0.5s ease-out;
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
   }
 
   .nav-links.show {
@@ -145,6 +166,7 @@
     height: 100vh;
     justify-content: space-around;
     min-width: 250px;
-    transition: all 0.5s ease-in-out;
+    visibility: visible;
+    opacity: 1;
   }
 }

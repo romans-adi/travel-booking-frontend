@@ -12,10 +12,11 @@
   justify-content: flex-start;
 
   #home-title {
-    font-size: 3rem;
+    font-size: 2rem;
     color: $white;
     text-align: center;
     margin-top: auto;
+    width: 80%;
   }
 
   #home-description {
@@ -54,33 +55,11 @@
     margin-top: 40%;
 
     #log-in-button {
-      border: 2px solid $primary-color;
-      font-weight: bold;
-      color: $primary-color;
-      height: 50px;
-      width: 150px;
-      padding: 0 20px;
-      border-radius: 5px;
-      margin: 12px;
-      cursor: pointer;
-
-      &:hover {
-        transform: scale(1.1);
-      }
+      @include primary-button;
     }
 
     #sign-up-button {
-      background-color: $primary-color;
-      color: $white;
-      height: 50px;
-      width: 150px;
-      border-radius: 5px;
-      margin: 12px;
-      cursor: pointer;
-
-      &:hover {
-        transform: scale(1.1);
-      }
+      @include secondary-button;
     }
   }
 

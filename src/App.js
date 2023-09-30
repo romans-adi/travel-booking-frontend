@@ -1,7 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
+import { authSuccess } from './redux/reducers/auth/authSlice';
 import './App.scss';
 import Home from './pages/Home/Home';
 import Navbar from './components/Navbar/Navbar';
@@ -13,6 +16,17 @@ import RemoveTravel from './pages/RemoveTravel/RemoveTravel';
 import Travel from './pages/Travels/Travel';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (token && user) {
+      dispatch(authSuccess({ token, user }));
+      console.log(token);
+    }
+  });
+
   return (
     <div className="App">
       <Router>
@@ -26,6 +40,7 @@ function App() {
           <Route path="/booktravel" element={<BookTravel />} />
           <Route path="/removetravel" element={<RemoveTravel />} />
         </Routes>
+        <Toaster />
       </Router>
     </div>
   );
