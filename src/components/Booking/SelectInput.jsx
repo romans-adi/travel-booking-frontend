@@ -19,7 +19,7 @@ const SelectInput = ({ selectedPlace, setSelectedPlace, places }) => (
             </option>
           ))}
         </select>
-        <div className="absolute inset-y-0 right-4 flex items-center pr-3 pointer-events-none">
+        <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
