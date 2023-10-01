@@ -86,6 +86,7 @@ function TravelContent({ selectedTravel, randomPlaceImages }) {
       <Link to="/places">
         <button
           type="button"
+          aria-label="Back"
           className="rounded-r-full h-14 w-20 bg-gray-300 hover:bg-main text-white left-0 absolute bottom-0 transform -translate-y-1/2 outline-none transition duration-700 ease-in-out"
         >
           <svg

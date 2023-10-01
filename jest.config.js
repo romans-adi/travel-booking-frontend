@@ -18,16 +18,21 @@ module.exports = {
 
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
+    '^.+\\.js?$': 'babel-jest',
   },
 
   transformIgnorePatterns: [
     '/node_modules/',
     '^.+\\.scss$',
+    'node_modules/(?!axios)/',
   ],
 
   moduleNameMapper: {
     '\\.(css|scss)$': '<rootDir>/src/__mocks__/style-mock.js',
+    '^axios$': require.resolve('axios'),
   },
+
+  setupFilesAfterEnv: ['esm'],
 
   testEnvironment: 'jsdom',
 };
