@@ -3,7 +3,7 @@ import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import CarouselItemsSection from '../../../components/Main/Carousel/CarouselItemSection';
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/extend-expect';
 
 jest.mock('react-transition-group', () => ({
   TransitionGroup: ({ children }) => <div>{children}</div>,

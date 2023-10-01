@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import '@testing-library/jest-dom/extend-expect';
 import CarouselItem from '../../../components/Main/Carousel/CarouselItem';
-import '@testing-library/jest-dom';
 
 const sampleItem = {
   id: 1,

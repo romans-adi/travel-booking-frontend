@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Item from '../../components/Menu/Item';
+import Item from '../../components/Main/Item';
 import MainHeader from './MainHeader';
 import { placePropTypes } from './prop-types';
 

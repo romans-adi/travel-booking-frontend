@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom';
+
 import Carousel from '../../../components/Main/Carousel/Carousel';
 
 const sampleItems = [

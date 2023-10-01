@@ -1,9 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import TravelTypeIcons from '../../../components/Main/Icons/TravelTypesIcons';
 import iconMappings from '../../../components/Main/Icons/IconMapping';
-import '@testing-library/jest-dom';
 
+// Define a sample travel type for testing
 const sampleTravelType = 'cultural';
 
 describe('TravelTypeIcons Component', () => {

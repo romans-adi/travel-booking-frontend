@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import Item from '../../../components/Main/Item';
-import '@testing-library/jest-dom';
 
 // eslint-disable-next-line react/display-name
 jest.mock('../../../components/Menu/Icons/TravelTypesIcons', () => () => (

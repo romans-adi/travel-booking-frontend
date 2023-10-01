@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'; // Import jest-dom matchers
 import CarouselControls from '../../../components/Main/Carousel/CarouselControl';
-import '@testing-library/jest-dom';
 
 describe('CarouselControls Component', () => {
   it('calls handlePrevSlide when prev button is clicked', () => {
