@@ -13,7 +13,7 @@ function Item({ place, travelType }) {
       />
       <h2 className="text-xl font-semibold mt-4">{place.name}</h2>
       <p className="text-gray-500">{place.description}</p>
-      <TravelTypeIcons travelType={travelType} />
+      <TravelTypeIcons data-testid="travel-type-icon" travelType={travelType} />
     </div>
   );
 }

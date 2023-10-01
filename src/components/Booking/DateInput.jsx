@@ -9,6 +9,7 @@ const DateInput = ({ selectedDate, setSelectedDate }) => (
       name="date"
       value={selectedDate}
       onChange={(e) => setSelectedDate(e.target.value)}
+      data-testid="date-input"
       className="w-full px-6 py-4 rounded-full text-sm bg-main text-white outline-none font-semibold border border-whitefont-semibold focus:bg-second cursor-text"
     />
   </div>

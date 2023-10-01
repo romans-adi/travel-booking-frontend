@@ -11,8 +11,9 @@ const SelectInput = ({ selectedPlace, setSelectedPlace, places }) => (
           value={selectedPlace}
           onChange={(e) => setSelectedPlace(e.target.value)}
           className="w-full px-6 py-4 rounded-full text-sm bg-main group text-white outline-none border border-white placeholder:text-white font-semibold appearance-none focus:bg-second cursor-pointer"
+          data-testid="select-input"
         >
-          <option value="" disabled>Select Your City</option>
+          <option key="" value="" disabled>Select Your City</option>
           {places.map((place) => (
             <option key={place.id} value={place.name}>
               {place.name}

@@ -38,6 +38,7 @@ function ReservationListItem({
           type="button"
           onClick={() => onUnbook(booking.id)}
           className="bg-red-500 text-white py-2 mt-2 rounded-md h-10 px-10 font-semibold"
+          data-testid="unbook-button"
         >
           Unbook
         </button>

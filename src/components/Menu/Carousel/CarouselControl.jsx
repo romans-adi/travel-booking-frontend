@@ -8,6 +8,7 @@ function CarouselControls({
     <div className="carousel-controls">
       <button
         type="button"
+        data-testid="prev-button"
         className={`carousel-control prev rounded-r-full h-14 w-20 ${
           isPrevArrowClicked ? 'bg-main' : 'bg-gray-300'
         } hover:bg-main text-white left-0 absolute top-1/2 transform -translate-y-1/2 outline-none transition duration-700 ease-in-out`}
@@ -27,6 +28,7 @@ function CarouselControls({
       </button>
       <button
         type="button"
+        data-testid="next-button"
         className={`carousel-control next rounded-l-full h-14 w-20 hover:bg-main ${isNextArrowClicked ? 'bg-main' : 'bg-gray-300'} text-white text-2xl right-0 absolute top-1/2 transform -translate-y-1/2 outline-none transition duration-700 ease-in-out`}
         onClick={handleNextSlide}
       >
