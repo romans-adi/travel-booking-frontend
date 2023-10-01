@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
@@ -12,8 +12,12 @@ import '@testing-library/jest-dom';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
+afterEach(() => {
+  mockAxios.reset();
+});
+
 describe('Travel Component', () => {
-  it('renders loading state when travels are loading', async () => {
+  it('renders loading state when travels are loading', () => {
     const initialState = {
       travels: {
         loading: true,
@@ -26,19 +30,16 @@ describe('Travel Component', () => {
     };
 
     const store = mockStore(initialState);
-    mockAxios.get.mockResolvedValue({ data: [] });
 
     render(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/travel/1']}>
           <Routes>
-            <Route path="/travel/:travelId" element={<Travel />} />
+            <Route path="/travel/" element={<Travel />} />
           </Routes>
         </MemoryRouter>
       </Provider>,
     );
-    await waitFor(() => {
-      expect(screen.queryByText('Loading...')).toBeInTheDocument();
-    });
+    expect(screen.queryByText('Loading...')).toBeInTheDocument();
   });
 });
