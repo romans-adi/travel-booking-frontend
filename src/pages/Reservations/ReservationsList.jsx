@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBookings } from '../../redux/reducers/bookingReducer';
+import { fetchBookings, removeBooking } from '../../redux/reducers/bookingReducer';
 import { fetchPlaces } from '../../redux/reducers/placesReducer';
+import { fetchTravels } from '../../redux/reducers/travelsReducer';
+import ReservationListItem from '../../components/Reservations/ReservationsItem';
+import '../../App.scss';
 
 function ReservationsList() {
   const dispatch = useDispatch();
   const places = useSelector((state) => state.places.data);
   const bookings = useSelector((state) => state.bookings.data);
+  const travels = useSelector((state) => state.travels.data);
   const loading = useSelector((state) => state.bookings.loading);
   const [backgroundImage, setBackgroundImage] = useState('');
   const error = useSelector((state) => state.bookings.error);
 
+  const handleUnbook = (reservationId) => {
+    dispatch(removeBooking(reservationId));
+  };
+
   useEffect(() => {
     dispatch(fetchBookings());
     dispatch(fetchPlaces());
+    dispatch(fetchTravels());
   }, [dispatch]);
 
   useEffect(() => {
@@ -44,29 +53,19 @@ function ReservationsList() {
           </p>
         )}
         <ul className="w-3/4 text-left text-white overflow-y-auto">
-          {bookings.map((booking) => (
-            <li
-              key={booking.id}
-              className="bg-black bg-opacity-70 text-white py-2 my-2 rounded-md"
-            >
-              <div className="flex flex-col px-20">
-                <div>
-                  <span className="font-semibold">Name: </span>
-                  <span className="text-yellow-600">{booking.city}</span>
-                </div>
-                <div>
-                  <span className="font-semibold">City: </span>
-                  <span className="text-green-600">{booking.city}</span>
-                </div>
-                <div>
-                  <span className="font-semibold">Date: </span>
-                  <span className="text-green-600">
-                    {new Date(booking.date_of_reservation).toLocaleDateString()}
-                  </span>
-                </div>
-              </div>
-            </li>
-          ))}
+          {bookings && bookings.length > 0 ? (
+            bookings.map((booking) => (
+              <ReservationListItem
+                key={booking.id}
+                booking={booking}
+                place={places.find((place) => place.name === booking.city)}
+                travel={travels}
+                onUnbook={handleUnbook}
+              />
+            ))
+          ) : (
+            <p className="text-white text-center text-2xl">No reservations found.</p>
+          )}
         </ul>
       </div>
     </div>

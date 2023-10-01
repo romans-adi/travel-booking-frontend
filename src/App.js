@@ -11,7 +11,6 @@ import Navbar from './components/Navbar/Navbar';
 import Main from './pages/Main/Main';
 import Booking from './pages/Booking/Booking';
 import ReservationsList from './pages/Reservations/ReservationsList';
-import BookTravel from './pages/BookTravel/BookTravel';
 import RemoveTravel from './pages/RemoveTravel/RemoveTravel';
 import Travel from './pages/Travels/Travel';
 
@@ -23,7 +22,6 @@ function App() {
     const user = JSON.parse(localStorage.getItem('user'));
     if (token && user) {
       dispatch(authSuccess({ token, user }));
-      console.log(token);
     }
   });
 
@@ -37,7 +35,6 @@ function App() {
           <Route path="/travel/:travelId" element={<Travel />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/reservations" element={<ReservationsList />} />
-          <Route path="/booktravel" element={<BookTravel />} />
           <Route path="/removetravel" element={<RemoveTravel />} />
         </Routes>
         <Toaster />

@@ -25,7 +25,7 @@ function BookingSuccess({ selectedDate, selectedPlace, places }) {
         {' '}
         <span className="text-xl">If you want to check your reservations, please follow</span>
         {' '}
-        <Link to="/myBooking" className="text-white text-xl font-semibold underline hover:text-supportive">this link</Link>
+        <Link to="/reservations" className="text-white text-xl font-semibold underline hover:text-supportive">this link</Link>
         .
       </div>
     </div>

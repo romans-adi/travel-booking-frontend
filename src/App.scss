@@ -48,3 +48,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .border-b-2-white {
   border-bottom: 1px solid white;
 }
+
+.custom-darken-bg {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.9rem;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+}

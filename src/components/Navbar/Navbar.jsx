@@ -45,8 +45,8 @@ const Navbar = () => {
           {isAuthenticated && (
             <>
               <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/reservation" onClick={handleMenu}>RESERVATION</NavLink>
-              <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/mybooking" onClick={handleMenu}>MY BOOKING</NavLink>
-              <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/booktravel" onClick={handleMenu}>BOOK TRAVEL</NavLink>
+              <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/reservations" onClick={handleMenu}>MY BOOKING</NavLink>
+              <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/booking" onClick={handleMenu}>BOOK TRAVEL</NavLink>
               <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/removetravel" onClick={handleMenu}>REMOVE TRAVEL</NavLink>
             </>
           )}
