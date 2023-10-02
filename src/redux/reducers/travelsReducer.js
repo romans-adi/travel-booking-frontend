@@ -21,6 +21,29 @@ export const fetchTravels = createAsyncThunk('travels/fetchTravels', async () =>
   }
 });
 
+export const createTravel = createAsyncThunk('travels/createTravel', async (newTravelData) => {
+  try {
+    const token = localStorage.getItem('token');
+
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    };
+
+    const response = await axios.post('http://localhost:3000/api/v1/travels', {
+      travel: newTravelData,
+    }, {
+      headers,
+    });
+
+    toast.success('Travel created successfully');
+    return response.data;
+  } catch (error) {
+    console.error('API Error:', error);
+    throw error;
+  }
+});
+
 export const deleteTravel = createAsyncThunk('travels/deleteTravel', async (travelId) => {
   try {
     const token = localStorage.getItem('token');
@@ -83,6 +106,20 @@ const travelsSlice = createSlice({
         };
       })
       .addCase(deleteTravel.rejected, (state, action) => ({
+        ...state,
+        loading: false,
+        error: action.error.message,
+      }))
+      .addCase(createTravel.pending, (state) => ({
+        ...state,
+        loading: true,
+        error: null,
+      }))
+      .addCase(createTravel.fulfilled, (state, action) => ({
+        ...state,
+        loading: false,
+      }))
+      .addCase(createTravel.rejected, (state, action) => ({
         ...state,
         loading: false,
         error: action.error.message,

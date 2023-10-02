@@ -1,62 +1,57 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import { createPlace } from '../../redux/reducers/placesReducer';
 
 function CreatePlaceForm() {
-  const [newPlaceName, setNewPlaceName] = useState('');
-  const [newPlaceImage, setNewPlaceImage] = useState('');
-  const [newPlaceDescription, setNewPlaceDescription] = useState('');
+  const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleCreatePlace = async () => {
-    try {
-      const response = await axios.post('/api/v1/places', {
-        place: {
-          name: newPlaceName,
-          image: newPlaceImage,
-          description: newPlaceDescription,
-        },
-      });
-
-      console.log('New place created:', response.data);
-      setNewPlaceName('');
-      setNewPlaceImage('');
-      setNewPlaceDescription('');
-    } catch (error) {
-      console.error('API Error:', error);
-    }
+  const onSubmit = (formData) => {
+    dispatch(createPlace(formData));
+    navigate('/addtravel');
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <h2 className="text-4xl font-bold text-white mb-4">Create a New Place</h2>
-      <input
-        type="text"
-        placeholder="Place Name"
-        value={newPlaceName}
-        onChange={(e) => setNewPlaceName(e.target.value)}
-        className="mb-2 p-2 border rounded"
-      />
-      <input
-        type="text"
-        placeholder="Image URL"
-        value={newPlaceImage}
-        onChange={(e) => setNewPlaceImage(e.target.value)}
-        className="mb-2 p-2 border rounded"
-      />
-      <textarea
-        placeholder="Description"
-        value={newPlaceDescription}
-        onChange={(e) => setNewPlaceDescription(e.target.value)}
-        className="mb-2 p-2 border rounded"
-      />
-      <button
-        type="button"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={handleCreatePlace}
-      >
-        Create Place
-      </button>
-    </div>
+    <form className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md" onSubmit={handleSubmit(onSubmit)}>
+      <h2 className="text-4xl font-bold text-gray-800 mb-4">First, Add a New Place</h2>
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Place Name"
+          className="w-full p-3 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
+          {...register('name', { required: 'Name is required' })}
+        />
+      </div>
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Image URL"
+          className="w-full p-3 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
+          {...register('main_picture', { required: 'Image URL is required' })}
+        />
+      </div>
+      <div className="mb-4">
+        <textarea
+          placeholder="Description"
+          className="w-full p-3 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
+          {...register('description', { required: 'Description is required' })}
+        />
+      </div>
+      <div className="flex justify-end">
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:ring focus:bg-blue-400"
+        >
+          Next
+        </button>
+      </div>
+    </form>
   );
 }
 
 export default CreatePlaceForm;
+

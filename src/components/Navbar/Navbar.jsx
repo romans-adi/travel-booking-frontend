@@ -53,7 +53,7 @@ const Navbar = () => {
           )}
           {isAuthenticated && role === 'agency' && (
             <>
-              <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/addtravel" onClick={handleMenu}>ADD TRAVEL</NavLink>
+              <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/addplace" onClick={handleMenu}>ADD TRAVEL</NavLink>
             </>
           )}
           {isAuthenticated
