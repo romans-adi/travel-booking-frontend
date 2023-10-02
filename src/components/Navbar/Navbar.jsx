@@ -11,6 +11,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const role = useSelector((state) => state.auth.user.role);
 
   const handleMenu = () => {
     setShowMenu((prevShowMenu) => !prevShowMenu);
@@ -42,12 +43,18 @@ const Navbar = () => {
         <li className="navigation">
           <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/places" onClick={handleMenu}>EXPLORE PLACES</NavLink>
 
-          {isAuthenticated && (
+          {isAuthenticated && role !== 'agency' && (
             <>
               <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/reservation" onClick={handleMenu}>RESERVATION</NavLink>
               <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/mybooking" onClick={handleMenu}>MY BOOKING</NavLink>
               <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/booktravel" onClick={handleMenu}>BOOK TRAVEL</NavLink>
               <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/removetravel" onClick={handleMenu}>REMOVE TRAVEL</NavLink>
+            </>
+          )}
+          {isAuthenticated && role === 'agency' && (
+            <>
+              <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/addtravel" onClick={handleMenu}>ADD TRAVEL</NavLink>
+              <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/mytravels" onClick={handleMenu}>DELETE TRAVEL</NavLink>
             </>
           )}
           {isAuthenticated
