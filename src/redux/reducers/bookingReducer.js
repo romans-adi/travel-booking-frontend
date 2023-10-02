@@ -70,7 +70,7 @@ export const removeBooking = createAsyncThunk(
   },
 );
 
-const initialState = {
+export const initialState = {
   data: [],
   loading: false,
   error: null,
