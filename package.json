@@ -28,6 +28,8 @@
     "react-transition-group": "^4.4.5",
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.4.2",
     "sass": "^1.68.0",
     "slick-carousel": "^1.8.1",
     "uuid": "^9.0.1",

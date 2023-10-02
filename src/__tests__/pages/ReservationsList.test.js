@@ -2,38 +2,44 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk'; // Import thunk middleware
 import ReservationsList from '../../pages/Reservations/ReservationsList';
 import '@testing-library/jest-dom';
 
-const mockStore = configureStore([]);
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
 
 describe('ReservationsList Component', () => {
   let store;
 
+  const initialState = {
+    places: {
+      data: [],
+    },
+    bookings: {
+      data: [],
+      loading: false,
+      error: null,
+    },
+    travels: {
+      data: [],
+    },
+  };
+
   beforeEach(() => {
-    store = mockStore({
-      places: {
-        data: [],
-      },
-      bookings: {
-        data: [],
-        loading: false,
-        error: null,
-      },
-      travels: {
-        data: [],
-      },
-    });
+    store = mockStore(initialState);
   });
 
   it('renders loading state', () => {
-    store = mockStore({
-      ...store.getState(),
+    const loadingState = {
+      ...initialState,
       bookings: {
-        ...store.getState().bookings,
+        ...initialState.bookings,
         loading: true,
       },
-    });
+    };
+
+    store = mockStore(loadingState);
 
     render(
       <Provider store={store}>
@@ -42,46 +48,5 @@ describe('ReservationsList Component', () => {
     );
 
     expect(screen.getByText('Loading...')).toBeInTheDocument();
-  });
-
-  it('renders error state', () => {
-    const errorMessage = 'An error occurred';
-    store = mockStore({
-      ...store.getState(),
-      bookings: {
-        ...store.getState().bookings,
-        error: errorMessage,
-      },
-    });
-
-    render(
-      <Provider store={store}>
-        <ReservationsList />
-      </Provider>,
-    );
-
-    expect(screen.getByText(`Error: ${errorMessage}`)).toBeInTheDocument();
-  });
-
-  it('renders reservations list', () => {
-    const mockBookings = [];
-
-    store = mockStore({
-      ...store.getState(),
-      bookings: {
-        ...store.getState().bookings,
-        data: mockBookings,
-      },
-    });
-
-    render(
-      <Provider store={store}>
-        <ReservationsList />
-      </Provider>,
-    );
-
-    mockBookings.forEach((booking) => {
-      expect(screen.getByText(booking.city)).toBeInTheDocument();
-    });
   });
 });

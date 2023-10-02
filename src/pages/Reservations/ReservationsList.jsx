@@ -20,17 +20,9 @@ function ReservationsList() {
   };
 
   useEffect(() => {
-    const fetchAllData = async () => {
-      try {
-        await dispatch(fetchBookings());
-        await dispatch(fetchPlaces());
-        await dispatch(fetchTravels());
-      } catch (error) {
-        console.error('An error occurred:', error);
-      }
-    };
-
-    fetchAllData();
+    dispatch(fetchBookings());
+    dispatch(fetchPlaces());
+    dispatch(fetchTravels());
   }, [dispatch]);
 
   useEffect(() => {
