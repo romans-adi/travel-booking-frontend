@@ -10,17 +10,17 @@ const SelectInput = ({ selectedPlace, setSelectedPlace, places }) => (
           name="place"
           value={selectedPlace}
           onChange={(e) => setSelectedPlace(e.target.value)}
-          className="w-full px-6 py-4 rounded-full text-sm bg-main group text-white outline-none border border-white placeholder:text-white font-semibold appearance-none focus:bg-second cursor-pointer"
+          className="w-full min-w-max pr-10 pl-6 py-4 rounded-full text-sm bg-main group text-white outline-none border border-white placeholder:text-white font-semibold appearance-none focus:bg-second cursor-pointer"
           data-testid="select-input"
         >
-          <option key="" value="" disabled>Select Your City</option>
+          <option key="" value="" disabled>Select Destination</option>
           {places.map((place) => (
             <option key={place.id} value={place.name}>
               {place.name}
             </option>
           ))}
         </select>
-        <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+        <div className="absolute pr-2 inset-y-0 right-4 flex items-center pointer-events-none">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

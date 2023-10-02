@@ -12,7 +12,6 @@ export const fetchBookings = createAsyncThunk(
           Authorization: `${token}`,
         },
       });
-      console.log('API Response:', response.data);
       return response.data;
     } catch (error) {
       console.error('API Error:', error);

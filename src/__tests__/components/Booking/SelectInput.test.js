@@ -23,7 +23,7 @@ describe('SelectInput Component', () => {
     );
 
     const selectInput = getByTestId('select-input');
-    const placeholderOption = getByText('Select Your City');
+    const placeholderOption = getByText('Select Destination');
 
     expect(selectInput).toBeInTheDocument();
     expect(selectInput).toHaveValue(selectedPlace);

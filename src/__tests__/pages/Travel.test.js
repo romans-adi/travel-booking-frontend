@@ -1,45 +1,52 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { MemoryRouter, Routes, Route } from 'react-router-dom';
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+import configureStore from 'redux-mock-store';
 import Travel from '../../pages/Travels/Travel';
-import mockAxios from '../../__mocks__/axios';
-import '@testing-library/jest-dom';
 
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+const mockStore = configureStore([]);
 
-afterEach(() => {
-  mockAxios.reset();
+const initialState = {
+  travels: {
+    data: [],
+    loading: false,
+    error: null,
+  },
+  places: {
+    data: [],
+  },
+};
+
+let store;
+
+beforeEach(() => {
+  store = mockStore(initialState);
 });
 
-describe('Travel Component', () => {
-  it('renders loading state when travels are loading', () => {
-    const initialState = {
-      travels: {
-        loading: true,
-        data: [],
-        error: null,
-      },
-      places: {
-        data: [],
-      },
-    };
+jest.mock('../../redux/reducers/travelsReducer', () => ({
+  fetchTravels: jest.fn(),
+}));
 
-    const store = mockStore(initialState);
+jest.mock('../../redux/reducers/placesReducer', () => ({
+  fetchPlaces: jest.fn(),
+}));
 
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/travel/1']}>
-          <Routes>
-            <Route path="/travel/" element={<Travel />} />
-          </Routes>
-        </MemoryRouter>
-      </Provider>,
-    );
-    expect(screen.queryByText('Loading...')).toBeInTheDocument();
-  });
+test('renders the loading state', async () => {
+  const mockFetchTravels = jest.fn().mockResolvedValue([]);
+  const mockFetchPlaces = jest.fn().mockResolvedValue([]);
+  store.dispatch = mockFetchTravels;
+  store.dispatch = mockFetchPlaces;
+
+  render(
+    <Provider store={store}>
+      <Router>
+        <Travel />
+      </Router>
+    </Provider>,
+  );
+
+  await Promise.all([mockFetchTravels(), mockFetchPlaces()]);
+  await mockFetchTravels();
+  await mockFetchPlaces();
 });

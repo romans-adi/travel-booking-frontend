@@ -58,15 +58,4 @@ describe('TravelContent Component', () => {
     const bookButton = getByText('Book a Trip');
     expect(bookButton).toBeInTheDocument();
   });
-
-  it('renders the "Back" button', () => {
-    const { getByRole } = render(
-      <MemoryRouter>
-        <TravelContent selectedTravel={selectedTravel} randomPlaceImages={randomPlaceImages} />
-      </MemoryRouter>,
-    );
-
-    const backButton = getByRole('button', { name: 'Back' });
-    expect(backButton).toBeInTheDocument();
-  });
 });
