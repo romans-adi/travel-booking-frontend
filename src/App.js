@@ -15,7 +15,6 @@ import BookTravel from './pages/BookTravel/BookTravel';
 import RemoveTravel from './pages/RemoveTravel/RemoveTravel';
 import Travel from './pages/Travels/Travel';
 import AddTravel from './pages/AddTravel/AddTravel';
-import DeleteTravel from './pages/DeleteTravel/DeleteTravel';
 
 function App() {
   const dispatch = useDispatch();
@@ -41,7 +40,6 @@ function App() {
           <Route path="/booktravel" element={<BookTravel />} />
           <Route path="/removetravel" element={<RemoveTravel />} />
           <Route path="/addtravel" element={<AddTravel />} />
-          <Route path="/deletetravel" element={<DeleteTravel />} />
         </Routes>
         <Toaster />
       </Router>

@@ -1,10 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import TravelTypeIcons from '../Icons/TravelTypesIcons';
 
+import { deleteTravel, fetchTravels } from '../../../redux/reducers/travelsReducer';
+import { fetchPlaces } from '../../../redux/reducers/placesReducer';
+
 function CarouselItem({ item }) {
+  const dispatch = useDispatch();
+  const role = useSelector((state) => state.auth.user.role);
+
+  const handleDeleteTravel = (id) => {
+    console.log(`deleteTravel${id}`);
+    dispatch(deleteTravel(id));
+    setTimeout(() => {
+      dispatch(fetchTravels());
+      dispatch(fetchPlaces());
+    }, 200);
+  };
+
   return (
+
     <Link to={`/travel/${item.id}`} key={item.id}>
       <div className="carousel-card w-full items-center group justify-center flex flex-col gap-6 transform hover:scale-105 duration-500 hover:bg-gray-700 hover:shadow-md rounded-lg hover:text-white transition">
         <img
@@ -19,8 +36,19 @@ function CarouselItem({ item }) {
           {item.description}
         </p>
         <TravelTypeIcons travelType={item.travelType} />
+        {role === 'agency' && (
+          <button
+            type="button"
+            className="btn"
+            style={{ border: '1px solid red', color: 'red', zIndex: 10000 }}
+            onClick={() => handleDeleteTravel(item.id)}
+          >
+            DELETE
+          </button>
+        )}
       </div>
     </Link>
+
   );
 }
 

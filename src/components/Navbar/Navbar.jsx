@@ -41,7 +41,7 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li className="navigation">
-          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/places" onClick={handleMenu}>EXPLORE PLACES</NavLink>
+          <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/places" onClick={handleMenu}>{role == 'user' ? 'EXPLORE PLACES' : 'DELETE PLACES'}</NavLink>
 
           {isAuthenticated && role !== 'agency' && (
             <>
@@ -54,7 +54,6 @@ const Navbar = () => {
           {isAuthenticated && role === 'agency' && (
             <>
               <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/addtravel" onClick={handleMenu}>ADD TRAVEL</NavLink>
-              <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/mytravels" onClick={handleMenu}>DELETE TRAVEL</NavLink>
             </>
           )}
           {isAuthenticated
