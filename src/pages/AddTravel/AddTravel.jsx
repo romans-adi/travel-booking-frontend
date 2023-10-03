@@ -52,7 +52,7 @@ function AddTravelForm() {
       </div>
       <div className="mb-4">
         <input
-          type="number"
+          type="float"
           placeholder="Price"
           {...register('price', { required: 'Price is required' })}
           className="w-full p-2 border rounded"
