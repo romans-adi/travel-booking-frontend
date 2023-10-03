@@ -7,7 +7,7 @@ export const fetchBookings = createAsyncThunk(
   async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('https://traveli-backend.onrender.com/api/v1/reservations', {
+      const response = await axios.get('https://traveli-api.onrender.com/api/v1/reservations', {
         headers: {
           Authorization: `${token}`,
         },
@@ -25,7 +25,7 @@ export const createBooking = createAsyncThunk(
   async ({ dateOfBooking, city, travelId }, { rejectWithValue, dispatch }) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('https://traveli-backend.onrender.com/api/v1/reservations', {
+      const response = await axios.post('https://traveli-api.onrender.com/api/v1/reservations', {
         reservation: {
           date_of_reservation: dateOfBooking,
           city,
@@ -52,7 +52,7 @@ export const removeBooking = createAsyncThunk(
   async (reservationId, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.delete(`https://traveli-backend.onrender.com/api/v1/reservations/${reservationId}`, {
+      const response = await axios.delete(`https://traveli-api.onrender.com/api/v1/reservations/${reservationId}`, {
         headers: {
           Authorization: `${token}`,
         },

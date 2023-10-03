@@ -8,7 +8,7 @@ export const fetchPlaces = createAsyncThunk('places/fetchPlaces', async () => {
       'Content-Type': 'application/json',
     };
 
-    const response = await axios.get('https://traveli-backend.onrender.com/api/v1/places', {
+    const response = await axios.get('https://traveli-api.onrender.com/api/v1/places', {
       headers,
     });
 
@@ -28,7 +28,7 @@ export const createPlace = createAsyncThunk('places/createPlace', async (newPlac
       Authorization: token,
     };
 
-    const response = await axios.post('https://traveli-backend.onrender.com/api/v1/places', {
+    const response = await axios.post('https://traveli-api.onrender.com/api/v1/places', {
       place: newPlaceData,
     }, {
       headers,
