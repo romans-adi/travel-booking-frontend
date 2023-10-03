@@ -5,7 +5,7 @@ const initialState = {
   user: {
     name: '',
     email: '',
-    role: '',
+    role: 'user',
   },
   loading: false,
   error: null,
@@ -36,7 +36,7 @@ const authSlice = createSlice({
       state.user = {
         name: '',
         email: '',
-        role: '',
+        role: 'user',
       };
       state.isAuthenticated = false;
     },
