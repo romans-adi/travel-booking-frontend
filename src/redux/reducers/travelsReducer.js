@@ -11,7 +11,7 @@ export const fetchTravels = createAsyncThunk('travels/fetchTravels', async () =>
       Authorization: token,
     };
 
-    const response = await axios.get('http://localhost:3000/api/v1/travels', {
+    const response = await axios.get('https://traveli-backend.onrender.com/api/v1/travels', {
       headers,
     });
     return response.data;
@@ -30,7 +30,7 @@ export const createTravel = createAsyncThunk('travels/createTravel', async (newT
       Authorization: token,
     };
 
-    const response = await axios.post('http://localhost:3000/api/v1/travels', {
+    const response = await axios.post('https://traveli-backend.onrender.com/api/v1/travels', {
       travel: newTravelData,
     }, {
       headers,
@@ -54,7 +54,7 @@ export const deleteTravel = createAsyncThunk('travels/deleteTravel', async (trav
       Authorization: token,
     };
 
-    await axios.delete(`http://localhost:3000/api/v1/travels/${travelId}`, {
+    await axios.delete(`https://traveli-backend.onrender.com/api/v1/travels/${travelId}`, {
       headers,
     });
     toast.success('Travel deleted successfully');
