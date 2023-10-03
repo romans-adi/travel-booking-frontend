@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
@@ -12,6 +12,7 @@ import sliderTwo from '../../assets/Images/slide_2.webp';
 const SignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [selectedRole, setSelectedRole] = useState('user');
 
   function closeSignUp() {
     const signUpContainer = document.getElementById('sign-up-container');
@@ -33,8 +34,8 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    formState: { errors },
     getValues,
-    formState: { errors }, // Access form errors
   } = useForm();
 
   return (
@@ -47,13 +48,28 @@ const SignUp = () => {
       </div>
       <div id="log-in-form-container">
         <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="login-input-container role">
+            <label htmlFor="role">
+              Select your role:
+              <select
+                id="role"
+                name="role"
+                onClick={(e) => setSelectedRole(e.target.value)}
+                {...register('role', { required: 'Role is required' })}
+              >
+                <option value="user">User</option>
+                <option value="agency">Agency</option>
+              </select>
+            </label>
+          </div>
+          {errors.role && <p className="error-message">{`* ${errors.role.message}`}</p>}
           <div className="login-input-container">
             <BiSolidUserCircle className="input-icon" />
             <input
               type="text"
               id="name-input"
               name="name"
-              placeholder="Full Name"
+              placeholder={selectedRole === 'user' ? 'Name' : 'Agency Name'}
               {...register('name', { required: 'Name is required' })}
             />
           </div>
@@ -64,7 +80,7 @@ const SignUp = () => {
               type="email"
               id="email"
               name="email"
-              placeholder="Email"
+              placeholder={selectedRole === 'user' ? 'Email' : 'Agency Email'}
               {...register('email', {
                 required: 'Email is required',
                 pattern: {
@@ -100,7 +116,7 @@ const SignUp = () => {
             />
           </div>
           {errors.password_confirmation && (
-          <p className="error-message">{`* ${errors.password_confirmation.message}`}</p>
+            <p className="error-message">{`* ${errors.password_confirmation.message}`}</p>
           )}
           <button className="submit-button" type="submit">
             SIGN UP

@@ -55,6 +55,32 @@
       margin-top: 2rem;
     }
 
+    .login-input-container.role {
+      border: none;
+
+      label {
+        width: 100%;
+
+        @include center-column;
+
+        select {
+          width: 100%;
+          text-align: center;
+          height: 24px;
+          margin-top: 12px;
+          border: 1px solid black;
+          background-color: $white;
+
+          &:hover,
+          &:focus {
+            border: 1px solid $primary-color;
+            cursor: pointer;
+            color: $primary-color;
+          }
+        }
+      }
+    }
+
     .login-input-container {
       @include center;
 
