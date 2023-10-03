@@ -9,7 +9,6 @@ import Navbar from './components/Navbar/Navbar';
 import Main from './pages/Main/Main';
 import Booking from './pages/Booking/Booking';
 import ReservationsList from './pages/Reservations/ReservationsList';
-import RemoveTravel from './pages/RemoveTravel/RemoveTravel';
 import Travel from './pages/Travels/Travel';
 import AddTravel from './pages/AddTravel/AddTravel';
 import AddPlace from './pages/AddPlace/AddPlace';
@@ -35,7 +34,6 @@ function App() {
           <Route path="/travel/:travelId" element={<Travel />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/reservations" element={<ReservationsList />} />
-          <Route path="/removetravel" element={<RemoveTravel />} />
           <Route path="/addtravel" element={<AddTravel />} />
           <Route path="/addplace" element={<AddPlace />} />
         </Routes>
