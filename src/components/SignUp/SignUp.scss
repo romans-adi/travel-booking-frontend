@@ -57,9 +57,12 @@
 
     .login-input-container.role {
       border: none;
+
       label {
         width: 100%;
+
         @include center-column;
+
         select {
           width: 100%;
           text-align: center;

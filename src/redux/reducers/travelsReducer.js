@@ -39,6 +39,7 @@ export const createTravel = createAsyncThunk('travels/createTravel', async (newT
     toast.success('Travel created successfully');
     return response.data;
   } catch (error) {
+    toast.error('Error creating travel');
     console.error('API Error:', error);
     throw error;
   }
@@ -115,7 +116,7 @@ const travelsSlice = createSlice({
         loading: true,
         error: null,
       }))
-      .addCase(createTravel.fulfilled, (state, action) => ({
+      .addCase(createTravel.fulfilled, (state) => ({
         ...state,
         loading: false,
       }))

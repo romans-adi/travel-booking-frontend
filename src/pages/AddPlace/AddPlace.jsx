@@ -54,4 +54,3 @@ function CreatePlaceForm() {
 }
 
 export default CreatePlaceForm;
-
