@@ -4,11 +4,8 @@ import toast from 'react-hot-toast';
 
 export const fetchPlaces = createAsyncThunk('places/fetchPlaces', async () => {
   try {
-    const token = localStorage.getItem('token');
-
     const headers = {
       'Content-Type': 'application/json',
-      Authorization: token,
     };
 
     const response = await axios.get('http://localhost:3000/api/v1/places', {
