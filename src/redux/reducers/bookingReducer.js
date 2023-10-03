@@ -12,7 +12,6 @@ export const fetchBookings = createAsyncThunk(
           Authorization: `${token}`,
         },
       });
-      console.log('API Response:', response.data);
       return response.data;
     } catch (error) {
       console.error('API Error:', error);
@@ -23,7 +22,7 @@ export const fetchBookings = createAsyncThunk(
 
 export const createBooking = createAsyncThunk(
   'bookings/createBooking',
-  async ({ dateOfBooking, city, travelId }) => {
+  async ({ dateOfBooking, city, travelId }, { rejectWithValue, dispatch }) => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post('http://localhost:3000/api/v1/reservations', {
@@ -41,7 +40,9 @@ export const createBooking = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.error('API Error:', error);
-      throw error;
+      toast.error('An error occurred while creating a booking.');
+      dispatch(createBooking.rejected(error));
+      return rejectWithValue(error.message);
     }
   },
 );
@@ -69,7 +70,7 @@ export const removeBooking = createAsyncThunk(
   },
 );
 
-const initialState = {
+export const initialState = {
   data: [],
   loading: false,
   error: null,
@@ -88,6 +89,12 @@ const bookingsSlice = createSlice({
         error: null,
       };
     },
+    createBooking: (state, action) => ({
+      ...state,
+      data: [...state.data, action.payload],
+      loading: false,
+      error: null,
+    }),
   },
   extraReducers: (builder) => {
     builder

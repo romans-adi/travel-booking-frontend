@@ -10,7 +10,7 @@ function validateArray(props, propName, componentName) {
 
 function TravelContent({ selectedTravel, randomPlaceImages }) {
   return (
-    <div className="flex items-stretch mx-auto h-96 md:h-screen w-full px-16 gap-16 pt-20 lg:pb-40 lg:py-40 relative justify-center flex-wrap lg:flex-nowrap">
+    <div className="flex items-stretch mx-auto w-full px-16 gap-16 pt-20 lg:pb-40 lg:py-40 relative justify-center flex-wrap lg:flex-nowrap">
       <img
         src={selectedTravel?.image}
         alt={selectedTravel?.name}
@@ -83,24 +83,6 @@ function TravelContent({ selectedTravel, randomPlaceImages }) {
           </button>
         </Link>
       </div>
-      <Link to="/places">
-        <button
-          type="button"
-          className="rounded-r-full h-14 w-20 bg-gray-300 hover:bg-main text-white left-0 absolute bottom-0 transform -translate-y-1/2 outline-none transition duration-700 ease-in-out"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-6 h-6 transform ml-8 rotate-180"
-          >
-            <polygon points="5 2 17 12 5 22" fill="none" />
-          </svg>
-        </button>
-      </Link>
     </div>
   );
 }
