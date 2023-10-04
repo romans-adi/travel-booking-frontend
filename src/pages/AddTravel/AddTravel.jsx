@@ -21,7 +21,7 @@ function AddTravelForm() {
       await dispatch(fetchPlaces()).then(() => {
         if (placesData.length > 0) {
           const lastPlace = placesData[placesData.length - 1];
-          setLastPlaceId(lastPlace.id + 1);
+          setLastPlaceId(lastPlace.id);
           const randomIndex = Math.floor(Math.random() * placesData.length);
           if (placesData[randomIndex]) {
             setBgImage(placesData[randomIndex].main_picture);
