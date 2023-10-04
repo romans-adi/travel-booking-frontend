@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function validateArray(props, propName, componentName) {
   if (!Array.isArray(props[propName])) {
@@ -9,6 +10,8 @@ function validateArray(props, propName, componentName) {
 }
 
 function TravelContent({ selectedTravel, randomPlaceImages }) {
+  const isUser = useSelector((state) => state.auth.user.role === 'user');
+
   return (
     <div className="flex items-stretch mx-auto w-full px-16 gap-16 pt-20 lg:pb-40 lg:py-40 relative justify-center flex-wrap lg:flex-nowrap">
       <img
@@ -68,6 +71,7 @@ function TravelContent({ selectedTravel, randomPlaceImages }) {
             />
           ))}
         </div>
+        {isUser && (
         <Link to="/booking" className="flex self-end w-44 my-8 lg:my-4">
           <button
             type="button"
@@ -82,6 +86,7 @@ function TravelContent({ selectedTravel, randomPlaceImages }) {
             </div>
           </button>
         </Link>
+        )}
       </div>
     </div>
   );
