@@ -2,7 +2,7 @@
 
 # <a name="about-project"> Traveli </a>
 
-This project serves as the frontend component of a larger system, seamlessly interfacing with the corresponding [backend counterpart](https://github.com/romans-adi/travel-booking-backend) developed using the Rails framework. Its primary function is to execute GET requests, retrieving and rendering data from the specified endpoint.
+Traveli App is a user-friendly travel planning and booking platform that seamlessly integrates cutting-edge technologies. It utilizes React Router for smooth navigation, Redux for efficient state management, and Redux Toolkit's createAsyncThunk for real-time data fetching. With a responsive design, secure user authentication, and robust [backend support from here](https://github.com/romans-adi/travel-booking-backend), Traveli simplifies travel planning and booking, making it a delightful experience for users.
 
 <!-- TABLE OF CONTENTS -->
 
@@ -26,10 +26,11 @@ This project serves as the frontend component of a larger system, seamlessly int
 ## Tech Stack 🛠️ <a name="tech-stack"></a>
 
   <ul>
-     <li><a href="https://react.dev/">React</a></li>
-      <li><a href="https://axios-http.com/docs/intro">Axios</a></li>
-     <li><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></li>
-     <li><a href="https://www.w3.org/Style/CSS/Overview.en.html">CSS</a></li>
+    <li><a href="https://react.dev/">React</a></li>
+    <li><a href="https://axios-http.com/docs/intro">Axios</a></li>
+    <li><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></li>
+    <li><a href="https://jestjs.io/">Jest</a></li>
+    <li><a href="https://www.w3.org/Style/CSS/Overview.en.html">CSS</a></li>
   </ul>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -38,11 +39,20 @@ This project serves as the frontend component of a larger system, seamlessly int
 
 ## ✨ Key Features<a name="key-features"></a>
 
-- [x] React Router Integration: The project uses React Router to manage routing, allowing for navigation between different views within the application.
-- [x] Redux State Management: Redux is utilized to manage the application's state. The store is configured using Redux Toolkit, and the reducers handles state updates.
-- [x] Asynchronous Data Fetching: The application incorporates asynchronous data fetching using Redux Toolkit's createAsyncThunk. It fetches data from a specified API endpoint using Axios.
-- [x] Component-Based Architecture: The code is organized into separate components for improved maintainability and readability.
-- [x] Responsive Design: The application's design includes responsiveness and flexible styling for various screen sizes.
+ - [x] React Router Integration: The project utilizes React Router to manage routing, enabling seamless navigation between various views within the application.
+ - [x] Redux State Management: Redux is employed to efficiently manage the application's state. The store is configured using Redux Toolkit, and the reducers handle state updates effectively.
+ - [x] Asynchronous Data Fetching: The application incorporates asynchronous data fetching using Redux Toolkit's createAsyncThunk. It retrieves data from a specified API endpoint using Axios.
+ - [x] Component-Based Architecture: The code is thoughtfully organized into separate components, enhancing maintainability and code readability.
+ - [x] Responsive Design: The application's design is responsive, adapting gracefully to various screen sizes and ensuring a consistent user experience.
+ - [x] User Authentication: The application implements user login and sign-up functionality using JWT authorization to enhance security and streamline user management.
+ - [x] API Endpoints: All data retrieval is performed through the [backend part](https://github.com/romans-adi/travel-booking-backend) of the project.
+ - [x] Reducer and Redux Integration: Reducers and Redux are seamlessly integrated to facilitate API calls for the most crucial features.
+ - [x] Home Page: This serves as the entry point for users, providing user-friendly Sign Up and Login options.
+ - [x] Main Page: A user-friendly landing page that showcases various destinations, enticing users to explore the services offered.
+ - [x] Place Adding & Travel Adding Forms: These two consecutive forms empower agencies (one of the user roles) to add new places and travels, expanding the application's functionality.
+ - [x] Booking Page: Users can easily book their dream travel experience by selecting a date and choosing a trip from the dropdown list.
+ - [x] Reservations List Page: This page allows users to view their booked travels, giving them the option to remove or unbook a travel if needed.
+ - [x] Place Details Page: A detailed travel page that provides comprehensive information about the selected trip associated with the chosen place.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -105,7 +115,9 @@ http://localhost:3000/api/v1/places
 
 This URL should display the backend's response (random greeting message).
 
-3. Start Development Server: Once you've confirmed that your server is running, you can start the development server for your React app. To avoid conflicts with the Rails app (which uses port 3000), choose a different port for your React app. Run the following command:
+3. Once you've confirmed that your server is running, you can start the development server for your React app. To avoid conflicts with the Rails app (which uses port 3000), choose a different port for your React app. Currently, we are using port 3001, which won't trigger any errors at this moment.
+
+Run the following command:
 
 ```
 npm start
@@ -143,19 +155,10 @@ http://localhost:3001
 
 ## 🌟 Future Features <a name="future-features"></a>
 
-- [ ]User Authentication: Implement user login and sign-up functionality to enhance security and user management.
-- [ ] Reservation Page: Create a reservation page where users can make bookings for your service.
-- [ ] API Documentation: Develop comprehensive API documentation to assist developers in using your API effectively.
-- [ ] Project Deployment: Deploy the project to both staging and production environments for testing and production use.
-- [ ] Project Documentation: Create detailed project documentation to help users and developers understand the project's structure and functionality.
-- [ ] API Endpoints: Generate API endpoints and controllers to handle data interactions efficiently.
-- [ ] Reducer and Redux Integration: Implement Reducer and Redux to facilitate API calls for the "place" feature.
-- [ ] Main Page: Design and develop the main page of the application, providing an entry point for users.
-- [ ] Home Page: Create a user-friendly home page to showcase key features and content.
-- [ ] Place Adding Form: Develop a form for adding new places to your platform, enhancing user convenience.
-- [ ] Place Details Page: Build a dedicated page to display detailed information about specific places or locations.
-- [ ] Booking Functionality: Implement booking functionality to allow users to reserve places or services.
-- [ ]Cancel Reservation Page: Develop a feature that enables users to cancel their reservations easily.
+- [ ] Travel Package Creation: Implement a feature that allows travel agencies to create custom travel packages for specific destinations.
+- [ ] User Reviews and Ratings: Enable users to leave reviews and ratings for travel packages and destinations. Implement a rating system to help users make informed choices (for now the rating system is static and default).
+- [ ] Search and Filter Options: Enhance the search functionality with advanced filters such as price range, travel dates, destination type, and more to help users find their ideal travel package.
+- [ ] Interactive Maps: Integrate interactive maps that display the destinations and attractions within a selected travel package. Users can explore and plan their trips visually.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
