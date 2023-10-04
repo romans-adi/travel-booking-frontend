@@ -18,25 +18,24 @@ function AddTravelForm() {
   const travelTypes = ['cultural', 'beach', 'history', 'skiing', 'safari', 'mountain', 'rainforest', 'city', 'desert'];
 
   useEffect(() => {
-    const getLastPlaceId = async () => {
-      await dispatch(fetchPlaces()).then(() => {
-        if (placesData.length > 0) {
-          const lastPlace = placesData[placesData.length - 1];
-          console.log(lastPlace.id);
-          setLastPlaceId(lastPlace.id);
-          const randomIndex = Math.floor(Math.random() * placesData.length);
-          if (placesData[randomIndex]) {
-            setBgImage(placesData[randomIndex].main_picture);
-          }
-        }
-      });
-    };
-    getLastPlaceId();
+    dispatch(fetchPlaces());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (placesData.length > 0) {
+      const lastPlace = placesData[placesData.length - 1];
+      setLastPlaceId(lastPlace.id);
+      const randomIndex = Math.floor(Math.random() * placesData.length);
+      if (placesData[randomIndex]) {
+        setBgImage(placesData[randomIndex].main_picture);
+      }
+    }
+  }, [placesData]);
+
   const onSubmit = (formData) => {
-    dispatch(createTravel(formData));
-    navigate(`/travel/${formData.place_id}`);
+    const updatedFormData = { ...formData, place_id: lastPlaceId };
+    dispatch(createTravel(updatedFormData));
+    navigate(`/travel/${lastPlaceId}`);
   };
 
   return (
@@ -106,15 +105,6 @@ function AddTravelForm() {
               </option>
             ))}
           </select>
-        </div>
-        <div className="mb-4">
-          <input
-            type="number"
-            placeholder="Place ID"
-            className="w-full p-2 border rounded"
-            {...register('place_id', { required: 'Place ID is required' })}
-            value={lastPlaceId}
-          />
         </div>
         <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-auto">
           Create Travel
