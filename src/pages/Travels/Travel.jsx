@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
+import ClipLoader from 'react-spinners/ClipLoader';
 import { fetchTravels } from '../../redux/reducers/travelsReducer';
 import { fetchPlaces } from '../../redux/reducers/placesReducer';
 import TravelContent from './TravelContent';
@@ -31,7 +32,12 @@ function Travel() {
   const selectedTravel = travelsData.find((travel) => travel.id === Number(travelId));
 
   if (!selectedTravel) {
-    return <div>Travel not found</div>;
+    return (
+      <div className="flex justify-center items-center h-screen w-full">
+        <div className="text-stone-600 text-2xl">Travel not found</div>
+        <ClipLoader size="50" />
+      </div>
+    );
   }
 
   if (travelsLoading) {
