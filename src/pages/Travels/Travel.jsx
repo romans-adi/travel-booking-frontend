@@ -4,6 +4,8 @@ import { useParams, Link } from 'react-router-dom';
 import { fetchTravels } from '../../redux/reducers/travelsReducer';
 import { fetchPlaces } from '../../redux/reducers/placesReducer';
 import TravelContent from './TravelContent';
+import notFound from '../../assets/Images/not-found.png';
+import './Travel.scss';
 
 function Travel() {
   const dispatch = useDispatch();
@@ -31,7 +33,7 @@ function Travel() {
   const selectedTravel = travelsData.find((travel) => travel.id === Number(travelId));
 
   if (!selectedTravel) {
-    return <div>Travel not found</div>;
+    return <div className="not-found" style={{ backgroundImage: `url(${notFound})` }}>Travel not found</div>;
   }
 
   if (travelsLoading) {

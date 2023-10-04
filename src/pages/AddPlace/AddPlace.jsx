@@ -12,12 +12,12 @@ function CreatePlaceForm() {
   const navigate = useNavigate();
   const placesData = useSelector((state) => state.places.data);
   const [bgImage, setBgImage] = useState('');
-  const [hasFetchedPlaces, setHasFetchedPlaces] = useState(false); // Variable de estado
+  const [hasFetchedPlaces, setHasFetchedPlaces] = useState(false);
 
   useEffect(() => {
-    if (!hasFetchedPlaces) { // Verificar si aún no se ha hecho la solicitud
+    if (!hasFetchedPlaces) {
       dispatch(fetchPlaces());
-      setHasFetchedPlaces(true); // Marcar que ya se ha hecho la solicitud
+      setHasFetchedPlaces(true);
     }
 
     const randomIndex = Math.floor(Math.random() * placesData.length);
@@ -28,7 +28,7 @@ function CreatePlaceForm() {
 
   const onSubmit = (formData) => {
     dispatch(createPlace(formData));
-    navigate('/addtravel');
+    navigate('/places');
   };
 
   return (
