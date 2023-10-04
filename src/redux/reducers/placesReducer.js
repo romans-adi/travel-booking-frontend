@@ -14,7 +14,28 @@ export const fetchPlaces = createAsyncThunk('places/fetchPlaces', async () => {
 
     return response.data;
   } catch (error) {
-    console.error('API Error:', error);
+    toast.error('An error occurred while fetching places.');
+    throw error;
+  }
+});
+
+export const deletePlace = createAsyncThunk('places/deletePlace', async (placeId) => {
+  try {
+    const token = localStorage.getItem('token');
+
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    };
+
+    await axios.delete(`https://traveli-api.onrender.com/api/v1/places/${placeId}`, {
+      headers,
+    });
+
+    toast.success('Place deleted successfully');
+    return placeId;
+  } catch (error) {
+    toast.error('Error deleting place');
     throw error;
   }
 });
@@ -37,7 +58,7 @@ export const createPlace = createAsyncThunk('places/createPlace', async (newPlac
     toast.success('Place created successfully');
     return response.data;
   } catch (error) {
-    console.error('API Error:', error);
+    toast.error('Error creating place');
     throw error;
   }
 });
@@ -74,11 +95,31 @@ const placesSlice = createSlice({
         loading: true,
         error: null,
       }))
-      .addCase(createPlace.fulfilled, (state) => ({
+      .addCase(createPlace.fulfilled, (state, action) => ({
         ...state,
+        data: [...state.data, action.payload],
         loading: false,
       }))
       .addCase(createPlace.rejected, (state, action) => ({
+        ...state,
+        loading: false,
+        error: action.error.message,
+      }))
+      .addCase(deletePlace.pending, (state) => ({
+        ...state,
+        loading: true,
+        error: null,
+      }))
+      .addCase(deletePlace.fulfilled, (state, action) => {
+        const deletedPlaceId = action.payload;
+        const newData = state.data.filter((place) => place.id !== deletedPlaceId);
+        return {
+          ...state,
+          loading: false,
+          data: newData,
+        };
+      })
+      .addCase(deletePlace.rejected, (state, action) => ({
         ...state,
         loading: false,
         error: action.error.message,

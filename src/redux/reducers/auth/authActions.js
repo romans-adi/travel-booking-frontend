@@ -59,7 +59,6 @@ export const loginUser = (formData) => async (dispatch) => {
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
       toast.success(`Welcome, ${user.name}`);
-      console.log(token);
     } else {
       const errorResponse = response.data || 'An error occurred.';
       throw new Error(errorResponse);

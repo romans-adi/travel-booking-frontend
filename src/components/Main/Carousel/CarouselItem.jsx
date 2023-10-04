@@ -2,22 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 import TravelTypeIcons from '../Icons/TravelTypesIcons';
 
 import { deleteTravel, fetchTravels } from '../../../redux/reducers/travelsReducer';
-import { fetchPlaces } from '../../../redux/reducers/placesReducer';
+import { deletePlace, fetchPlaces } from '../../../redux/reducers/placesReducer';
 
 function CarouselItem({ item }) {
   const dispatch = useDispatch();
   const role = useSelector((state) => state.auth.user.role);
 
-  const handleDeleteTravel = (id) => {
-    console.log(`deleteTravel${id}`);
-    dispatch(deleteTravel(id));
-    setTimeout(() => {
-      dispatch(fetchTravels());
-      dispatch(fetchPlaces());
-    }, 200);
+  const handleDeleteTravel = async (id) => {
+    try {
+      await dispatch(deleteTravel(id));
+      await dispatch(deletePlace(id));
+      await dispatch(fetchTravels());
+      await dispatch(fetchPlaces());
+    } catch (error) {
+      toast.error('Error deleting travel');
+    }
   };
 
   return (

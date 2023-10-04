@@ -16,7 +16,7 @@ export const fetchTravels = createAsyncThunk('travels/fetchTravels', async () =>
     });
     return response.data;
   } catch (error) {
-    console.error('API Error:', error);
+    toast.error('An error occurred while fetching travels.');
     throw error;
   }
 });
@@ -40,7 +40,6 @@ export const createTravel = createAsyncThunk('travels/createTravel', async (newT
     return response.data;
   } catch (error) {
     toast.error('Error creating travel');
-    console.error('API Error:', error);
     throw error;
   }
 });
@@ -60,7 +59,7 @@ export const deleteTravel = createAsyncThunk('travels/deleteTravel', async (trav
     toast.success('Travel deleted successfully');
     return travelId;
   } catch (error) {
-    console.error('API Error:', error);
+    toast.error('Error deleting travel');
     throw error;
   }
 });
@@ -106,11 +105,6 @@ const travelsSlice = createSlice({
           data: newData,
         };
       })
-      .addCase(deleteTravel.rejected, (state, action) => ({
-        ...state,
-        loading: false,
-        error: action.error.message,
-      }))
       .addCase(createTravel.pending, (state) => ({
         ...state,
         loading: true,

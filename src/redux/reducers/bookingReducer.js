@@ -14,7 +14,7 @@ export const fetchBookings = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.error('API Error:', error);
+      toast.error('An error occurred while fetching bookings.');
       throw error;
     }
   },
@@ -39,7 +39,6 @@ export const createBooking = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      console.error('API Error:', error);
       toast.error('An error occurred while creating a booking.');
       dispatch(createBooking.rejected(error));
       return rejectWithValue(error.message);
@@ -64,7 +63,6 @@ export const removeBooking = createAsyncThunk(
       }
       throw new Error(response.statusText);
     } catch (error) {
-      console.error('API Error:', error);
       return rejectWithValue(error.message);
     }
   },
