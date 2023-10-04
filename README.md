@@ -40,20 +40,20 @@ Traveli App is a user-friendly travel planning and booking platform that seamles
 
 ## ✨ Key Features<a name="key-features"></a>
 
- - [x] React Router Integration: The project utilizes React Router to manage routing, enabling seamless navigation between various views within the application.
- - [x] Redux State Management: Redux is employed to efficiently manage the application's state. The store is configured using Redux Toolkit, and the reducers handle state updates effectively.
- - [x] Asynchronous Data Fetching: The application incorporates asynchronous data fetching using Redux Toolkit's createAsyncThunk. It retrieves data from a specified API endpoint using Axios.
- - [x] Component-Based Architecture: The code is thoughtfully organized into separate components, enhancing maintainability and code readability.
- - [x] Responsive Design: The application's design is responsive, adapting gracefully to various screen sizes and ensuring a consistent user experience.
- - [x] User Authentication: The application implements user login and sign-up functionality using JWT authorization to enhance security and streamline user management.
- - [x] API Endpoints: All data retrieval is performed through the [backend part](https://github.com/romans-adi/travel-booking-backend) of the project.
- - [x] Reducer and Redux Integration: Reducers and Redux are seamlessly integrated to facilitate API calls for the most crucial features.
- - [x] Home Page: This serves as the entry point for users, providing user-friendly Sign Up and Login options.
- - [x] Main Page: A user-friendly landing page that showcases various destinations, enticing users to explore the services offered.
- - [x] Place Adding & Travel Adding Forms: These two consecutive forms empower agencies (one of the user roles) to add new places and travels, expanding the application's functionality.
- - [x] Booking Page: Users can easily book their dream travel experience by selecting a date and choosing a trip from the dropdown list.
- - [x] Reservations List Page: This page allows users to view their booked travels, giving them the option to remove or unbook a travel if needed.
- - [x] Place Details Page: A detailed travel page that provides comprehensive information about the selected trip associated with the chosen place.
+ - **React Router Integration**: The project utilizes React Router to manage routing, enabling seamless navigation between various views within the application.
+ - **Redux State Management**: Redux is employed to efficiently manage the application's state. The store is configured using Redux Toolkit, and the reducers handle state updates effectively.
+ - **Asynchronous Data Fetching**: The application incorporates asynchronous data fetching using Redux Toolkit's createAsyncThunk. It retrieves data from a specified API endpoint using Axios.
+ - **Component-Based Architecture**: The code is thoughtfully organized into separate components, enhancing maintainability and code readability.
+ - **Responsive Design**: The application's design is responsive, adapting gracefully to various screen sizes and ensuring a consistent user experience.
+ - **User Authentication**: The application implements user login and sign-up functionality using JWT authorization to enhance security and streamline user management.
+ - **API Endpoints**: All data retrieval is performed through the [backend part](https://github.com/romans-adi/travel-booking-backend) of the project.
+ - **Reducer and Redux Integration**: Reducers and Redux are seamlessly integrated to facilitate API calls for the most crucial features.
+ - **Home Page**: This serves as the entry point for users, providing user-friendly Sign Up and Login options.
+ - **Main Page**: A user-friendly landing page that showcases various destinations, enticing users to explore the services offered.
+ - **Place Adding & Travel Adding Forms** These two consecutive forms empower agencies (one of the user roles) to add new places and travels, expanding the application's functionality.
+ - **Booking Page** Users can easily book their dream travel experience by selecting a date and choosing a trip from the dropdown list.
+ - **Reservations List Page**: This page allows users to view their booked travels, giving them the option to remove or unbook a travel if needed.
+ - **Place Details Page**: A detailed travel page that provides comprehensive information about the selected trip associated with the chosen place.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
