@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-props-no-spreading */
-// AddTravelForm.js
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -31,11 +30,15 @@ function AddTravelForm() {
       });
     };
     getLastPlaceId();
-  }, [dispatch]);
+  }, [dispatch, placesData]);
 
   const onSubmit = (formData) => {
-    dispatch(createTravel(formData));
-    navigate(`/travel/${formData.place_id}`);
+    const formDataWithPlaceId = {
+      ...formData,
+      place_id: lastPlaceId,
+    };
+    dispatch(createTravel(formDataWithPlaceId));
+    navigate(`/travel/${lastPlaceId}`);
   };
 
   return (
@@ -105,15 +108,6 @@ function AddTravelForm() {
               </option>
             ))}
           </select>
-        </div>
-        <div className="mb-4">
-          <input
-            type="number"
-            placeholder="Place ID"
-            className="w-full p-2 border rounded hidden"
-            {...register('place_id', { required: 'Place ID is required' })}
-            value={lastPlaceId}
-          />
         </div>
         <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-auto">
           Create Travel
