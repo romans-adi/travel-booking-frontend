@@ -11,14 +11,15 @@ function CarouselItem({ item }) {
   const dispatch = useDispatch();
   const role = useSelector((state) => state.auth.user.role);
 
-  const handleDeleteTravel = (id) => {
-    console.log(`deleteTravel${id}`);
-    dispatch(deleteTravel(id));
-    dispatch(deletePlace(id))
-    setTimeout(() => {
-      dispatch(fetchTravels());
-      dispatch(fetchPlaces());
-    }, 200);
+  const handleDeleteTravel = async (id) => {
+    try {
+      await dispatch(deleteTravel(id));
+      await dispatch(deletePlace(id));
+      await dispatch(fetchTravels());
+      await dispatch(fetchPlaces());
+    } catch (error) {
+      console.error('Error deleting item:', error);
+    }
   };
 
   return (
