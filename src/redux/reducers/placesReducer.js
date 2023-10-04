@@ -74,13 +74,11 @@ const placesSlice = createSlice({
         loading: true,
         error: null,
       }))
-      .addCase(createPlace.fulfilled, (state, action) => {
-        return {
-          ...state,
-          data: [...state.data, action.payload],
-          loading: false,
-        };
-      })
+      .addCase(createPlace.fulfilled, (state, action) => ({
+        ...state,
+        data: [...state.data, action.payload],
+        loading: false,
+      }))
       .addCase(createPlace.rejected, (state, action) => ({
         ...state,
         loading: false,
