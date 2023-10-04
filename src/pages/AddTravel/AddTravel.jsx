@@ -18,19 +18,21 @@ function AddTravelForm() {
   const travelTypes = ['cultural', 'beach', 'history', 'skiing', 'safari', 'mountain', 'rainforest', 'city', 'desert'];
 
   useEffect(() => {
-    dispatch(fetchPlaces());
+    const getLastPlaceId = async () => {
+      await dispatch(fetchPlaces()).then(() => {
+        if (placesData.length > 0) {
+          const lastPlace = placesData[placesData.length - 1];
+          console.log(lastPlace.id);
+          setLastPlaceId(lastPlace.id);
+          const randomIndex = Math.floor(Math.random() * placesData.length);
+          if (placesData[randomIndex]) {
+            setBgImage(placesData[randomIndex].main_picture);
+          }
+        }
+      });
+    };
+    getLastPlaceId();
   }, [dispatch]);
-
-  useEffect(() => {
-    if (placesData.length > 0) {
-      const lastPlace = placesData[placesData.length - 1];
-      setLastPlaceId(lastPlace.id);
-      const randomIndex = Math.floor(Math.random() * placesData.length);
-      if (placesData[randomIndex]) {
-        setBgImage(placesData[randomIndex].main_picture);
-      }
-    }
-  }, [placesData]);
 
   const onSubmit = (formData) => {
     dispatch(createTravel(formData));
