@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import TravelTypeIcons from '../Icons/TravelTypesIcons';
 
 import { deleteTravel, fetchTravels } from '../../../redux/reducers/travelsReducer';
-import { deletePlace, fetchPlaces } from '../../../redux/reducers/placesReducer';
+import { fetchPlaces } from '../../../redux/reducers/placesReducer';
 
 function CarouselItem({ item }) {
   const dispatch = useDispatch();
@@ -15,7 +15,6 @@ function CarouselItem({ item }) {
   const handleDeleteTravel = async (id) => {
     try {
       await dispatch(deleteTravel(id));
-      await dispatch(deletePlace(id));
       await dispatch(fetchTravels());
       await dispatch(fetchPlaces());
     } catch (error) {
