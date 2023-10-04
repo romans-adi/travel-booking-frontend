@@ -22,8 +22,7 @@ function AddTravelForm() {
       await dispatch(fetchPlaces()).then(() => {
         if (placesData.length > 0) {
           const lastPlace = placesData[placesData.length - 1];
-          console.log(lastPlace.id);
-          setLastPlaceId(lastPlace.id);
+          setLastPlaceId(lastPlace.id + 1);
           const randomIndex = Math.floor(Math.random() * placesData.length);
           if (placesData[randomIndex]) {
             setBgImage(placesData[randomIndex].main_picture);
@@ -111,7 +110,7 @@ function AddTravelForm() {
           <input
             type="number"
             placeholder="Place ID"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded hidden"
             {...register('place_id', { required: 'Place ID is required' })}
             value={lastPlaceId}
           />
