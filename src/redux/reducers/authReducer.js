@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
-const apiURL = 'https://traveli-backend.onrender.com/';
+const apiURL = 'https://traveli-api.onrender.com/';
 
 const initialState = {
   token: null,
