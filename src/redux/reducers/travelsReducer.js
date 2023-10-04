@@ -106,14 +106,6 @@ const travelsSlice = createSlice({
           data: newData,
         };
       })
-      .addCase(deleteTravel.fulfilled, (state, action) => {
-        const deletedTravelId = action.payload;
-        const newData = state.data.filter((travel) => travel.id !== deletedTravelId);
-        return {
-          ...state,
-          loading: false,
-          data: newData,
-        }})
       .addCase(createTravel.pending, (state) => ({
         ...state,
         loading: true,
