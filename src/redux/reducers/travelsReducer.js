@@ -113,7 +113,7 @@ const travelsSlice = createSlice({
           ...state,
           loading: false,
           data: newData,
-        }
+        }})
       .addCase(createTravel.pending, (state) => ({
         ...state,
         loading: true,
