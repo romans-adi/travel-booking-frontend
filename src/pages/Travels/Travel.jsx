@@ -36,7 +36,7 @@ function Travel() {
 
   if (travelsLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen w-full">
         <div className="text-stone-600 text-2xl text-center">Loading...</div>
       </div>
     );
@@ -44,9 +44,9 @@ function Travel() {
 
   if (travelsError) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen w-full">
         <div>
-          Error:
+          <span className="text-red-800">Error:</span>
           {' '}
           {travelsError}
         </div>
