@@ -38,7 +38,7 @@ function AddTravelForm() {
       place_id: lastPlaceId,
     };
     dispatch(createTravel(formDataWithPlaceId));
-    navigate(`/travel/${lastPlaceId}`);
+    navigate('/places');
   };
 
   return (
