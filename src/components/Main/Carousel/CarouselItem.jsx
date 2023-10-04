@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import TravelTypeIcons from '../Icons/TravelTypesIcons';
 
 import { deleteTravel, fetchTravels } from '../../../redux/reducers/travelsReducer';
-import { fetchPlaces } from '../../../redux/reducers/placesReducer';
+import { deletePlace, fetchPlaces } from '../../../redux/reducers/placesReducer';
 
 function CarouselItem({ item }) {
   const dispatch = useDispatch();
@@ -14,6 +14,7 @@ function CarouselItem({ item }) {
   const handleDeleteTravel = (id) => {
     console.log(`deleteTravel${id}`);
     dispatch(deleteTravel(id));
+    dispatch(deletePlace(id))
     setTimeout(() => {
       dispatch(fetchTravels());
       dispatch(fetchPlaces());
