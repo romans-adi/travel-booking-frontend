@@ -14,7 +14,7 @@ export const fetchPlaces = createAsyncThunk('places/fetchPlaces', async () => {
 
     return response.data;
   } catch (error) {
-    console.error('API Error:', error);
+    toast.error('An error occurred while fetching places.');
     throw error;
   }
 });
@@ -35,7 +35,7 @@ export const deletePlace = createAsyncThunk('places/deletePlace', async (placeId
     toast.success('Place deleted successfully');
     return placeId;
   } catch (error) {
-    console.error('API Error:', error);
+    toast.error('Error deleting place');
     throw error;
   }
 });
@@ -58,7 +58,7 @@ export const createPlace = createAsyncThunk('places/createPlace', async (newPlac
     toast.success('Place created successfully');
     return response.data;
   } catch (error) {
-    console.error('API Error:', error);
+    toast.error('Error creating place');
     throw error;
   }
 });

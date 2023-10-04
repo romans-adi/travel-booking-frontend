@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 import { createBooking, fetchBookings } from '../../redux/reducers/bookingReducer';
 import { fetchPlaces } from '../../redux/reducers/placesReducer';
 import SelectInput from '../../components/Booking/SelectInput';
@@ -29,7 +30,7 @@ function Bookings() {
       );
       setReservationCreated(true);
     } catch (error) {
-      console.error('API Error:', error);
+      toast.error('Error creating booking');
     }
   };
 

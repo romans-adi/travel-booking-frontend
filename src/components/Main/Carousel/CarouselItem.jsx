@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 import TravelTypeIcons from '../Icons/TravelTypesIcons';
 
 import { deleteTravel, fetchTravels } from '../../../redux/reducers/travelsReducer';
@@ -18,7 +19,7 @@ function CarouselItem({ item }) {
       await dispatch(fetchTravels());
       await dispatch(fetchPlaces());
     } catch (error) {
-      console.error('Error deleting item:', error);
+      toast.error('Error deleting travel');
     }
   };
 
