@@ -63,7 +63,7 @@ Traveli App is a user-friendly travel planning and booking platform that seamles
 
 Explore the live demo of the Traveli App to see it in action:
 
-[TravelBooking Live Demo](https://traveli.onrender.com/)
+[Traveli](https://traveli.onrender.com/)
 
 Feel free to interact with the application to get a firsthand experience of its features and functionalities. Please note that the live demo represents a snapshot of the project and may not include all the latest updates and features. For the most up-to-date version of the application, you can refer to the GitHub repository.
 
