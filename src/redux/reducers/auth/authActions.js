@@ -4,7 +4,7 @@ import {
   authRequest, authSuccess, authFailure, logout,
 } from './authSlice';
 
-const apiURL = 'https://traveli-backend.onrender.com';
+const apiURL = 'https://traveli-api.onrender.com';
 
 export const registerUser = (formData) => async (dispatch) => {
   dispatch(authRequest());
