@@ -14,6 +14,7 @@ Traveli App is a user-friendly travel planning and booking platform that seamles
   - [Setup](#setup) 🔧
   - [Installation](#installation) ⚙️
   - [Usage](#usage) 🧰
+  - [Testing](#testing) :nut_and_bolt:
 - [Authors](#authors) 🖋️
 - [Future Features](#future-features) 🌟
 - [Contributing](#contributing) 🤝
@@ -133,6 +134,24 @@ http://localhost:3001
 ```
 
 5. If you have future features like GUI or interactive mode, follow the specific instructions provided for those features in the app's documentation.
+
+### Testing :nut_and_bolt:<a name="usage"></a>
+
+1. Use the following command to run the tests:
+
+```
+npm test
+```
+
+This will execute the test suite and provide you with information on test results and any potential issues.
+
+2. Interpreting Test Results: Keep in mind that this project is dynamically growing and evolving. As a result, some tests may occasionally fail due to the latest improvements and changes. It's essential to review the test results carefully, especially if you encounter failures.
+
+3. Reporting Issues: If you encounter any issues during testing, such as failing tests or unexpected behavior, please report them to the development team. You can do this by opening a new issue in the project's repository or contacting the project maintainers directly.
+
+Testing is an ongoing process, and the development team is actively working to maintain and improve the application. Your feedback is valuable in ensuring the continued quality of the project. Thank you for your cooperation in testing this application!
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
 
