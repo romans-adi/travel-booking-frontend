@@ -30,11 +30,12 @@ const Navbar = () => {
         type="button"
         className={showMenu ? 'burger-icon' : 'close-button'}
         style={{ zIndex: 100 }}
+        data-testid="burger-icon"
       >
         <div className={showMenu ? 'burger-bar' : 'close-bar'} />
         <div className={showMenu ? 'burger-bar' : 'close-bar'} />
       </button>
-      <ul className={showMenu ? 'nav-links' : 'nav-links show'}>
+      <ul className={showMenu ? 'nav-links' : 'nav-links show'} data-testid="nav-links">
         <li className="logo-container">
           <NavLink to="/" onClick={handleMenu}>
             <img src={Logo} alt="logo" className="logo-image" />
@@ -61,6 +62,7 @@ const Navbar = () => {
               type="button"
               onClick={handleLogOut}
               aria-label="logout-button"
+              data-testid="logout-button"
             >
               <i className="fa-solid fa-door-open" />
             </button>
