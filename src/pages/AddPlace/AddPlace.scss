@@ -1,0 +1,36 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/colors';
+
+.form-container {
+  @include center;
+
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+
+  form {
+    @include center-column;
+
+    backdrop-filter: blur(12px);
+    width: 90%;
+    background-color: $white;
+    border: 4px solid $primary-color;
+
+    h2 {
+      text-align: center;
+      margin: 24px;
+    }
+
+    div {
+      width: 90%;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .form-container {
+    form {
+      width: 50%;
+    }
+  }
+}
