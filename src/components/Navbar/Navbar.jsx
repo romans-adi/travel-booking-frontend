@@ -42,6 +42,7 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li className="navigation">
+          <NavLink to="/" onClick={handleMenu}>HOME</NavLink>
           <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/places" onClick={handleMenu}>{role === 'user' ? 'EXPLORE PLACES' : 'DELETE PLACES'}</NavLink>
 
           {isAuthenticated && role !== 'agency' && (
