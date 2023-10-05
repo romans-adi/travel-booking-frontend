@@ -51,7 +51,7 @@ const Home = () => {
       <SignUp />
       <LogIn />
       <h1 id="home-title">
-        {isAuthenticated ? `Wellcome to Traveli ${user.name} !` : 'Your dream travel agency.'}
+        {isAuthenticated ? `Welcome to Traveli ${user.name} !` : 'Your dream travel agency.'}
         {' '}
       </h1>
       <p id="home-description">How do you want to start?</p>
