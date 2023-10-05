@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { createPlace, fetchPlaces } from '../../redux/reducers/placesReducer';
 import './AddPlace.scss';
 
-function CreatePlaceForm() {
+const CreatePlaceForm = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -72,6 +72,6 @@ function CreatePlaceForm() {
       </form>
     </div>
   );
-}
+};
 
 export default CreatePlaceForm;

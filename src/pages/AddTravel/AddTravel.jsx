@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { createTravel } from '../../redux/reducers/travelsReducer';
 import { fetchPlaces } from '../../redux/reducers/placesReducer';
 
-function AddTravelForm() {
+const AddTravelForm = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const placesData = useSelector((state) => state.places.data);
@@ -111,6 +111,6 @@ function AddTravelForm() {
       </form>
     </div>
   );
-}
+};
 
 export default AddTravelForm;

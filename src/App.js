@@ -13,7 +13,7 @@ import Travel from './pages/Travels/Travel';
 import AddTravel from './pages/AddTravel/AddTravel';
 import AddPlace from './pages/AddPlace/AddPlace';
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,5 +41,5 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 export default App;

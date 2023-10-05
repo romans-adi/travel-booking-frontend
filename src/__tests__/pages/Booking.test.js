@@ -1,4 +1,5 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
@@ -41,7 +42,11 @@ describe('renders Bookings component', () => {
     );
 
     const bookNowButton = getByText('Book Now');
-    fireEvent.click(bookNowButton);
+    await act(async () => {
+      await apiService.createBooking();
+      fireEvent.click(bookNowButton);
+    });
+
     store.dispatch({
       type: 'bookings/createBooking/fulfilled',
       payload: {

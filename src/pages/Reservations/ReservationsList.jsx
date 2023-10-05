@@ -6,7 +6,7 @@ import { fetchTravels } from '../../redux/reducers/travelsReducer';
 import ReservationListItem from '../../components/Reservations/ReservationsItem';
 import '../../App.scss';
 
-function ReservationsList() {
+const ReservationsList = () => {
   const dispatch = useDispatch();
   const places = useSelector((state) => state.places.data);
   const bookings = useSelector((state) => state.bookings.data);
@@ -70,6 +70,6 @@ function ReservationsList() {
       </div>
     </div>
   );
-}
+};
 
 export default ReservationsList;

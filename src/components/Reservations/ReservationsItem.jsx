@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ReservationListItem({
+const ReservationListItem = ({
   booking, place, travel, onUnbook,
-}) {
+}) => {
   const matchingTravel = travel.find((t) => t.place_id === place.id);
   const destinationName = matchingTravel ? matchingTravel.name : booking.city;
   const listItemStyle = {
@@ -45,7 +45,7 @@ function ReservationListItem({
       </div>
     </li>
   );
-}
+};
 
 ReservationListItem.propTypes = {
   booking: PropTypes.shape({

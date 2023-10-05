@@ -8,7 +8,7 @@ import TravelTypeIcons from '../Icons/TravelTypesIcons';
 import { deleteTravel, fetchTravels } from '../../../redux/reducers/travelsReducer';
 import { fetchPlaces } from '../../../redux/reducers/placesReducer';
 
-function CarouselItem({ item }) {
+const CarouselItem = ({ item }) => {
   const dispatch = useDispatch();
   const role = useSelector((state) => state.auth.user.role);
 
@@ -53,7 +53,7 @@ function CarouselItem({ item }) {
     </div>
 
   );
-}
+};
 
 CarouselItem.propTypes = {
   item: PropTypes.shape({

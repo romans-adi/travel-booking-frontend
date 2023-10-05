@@ -9,7 +9,7 @@ import BookNowButton from '../../components/Booking/BookButton';
 import BookingSuccess from './BookingSuccess';
 import '../../App.scss';
 
-function Bookings() {
+const Bookings = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.bookings.loading);
   const places = useSelector((state) => state.places.data);
@@ -96,6 +96,6 @@ function Bookings() {
       </div>
     </div>
   );
-}
+};
 
 export default Bookings;

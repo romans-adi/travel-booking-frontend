@@ -1,9 +1,9 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import { render } from '@testing-library/react';
 import Item from '../../../components/Main/Item';
 import '@testing-library/jest-dom';
 
-// eslint-disable-next-line react/display-name
 jest.mock('../../../components/Main/Icons/TravelTypesIcons', () => () => (
   <div data-testid="travel-type-icon-mock">Mocked TravelTypeIcons</div>
 ));

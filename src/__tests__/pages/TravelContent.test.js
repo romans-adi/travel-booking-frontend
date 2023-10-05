@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import TravelContent from '../../pages/Travels/TravelContent';
 import '@testing-library/jest-dom';
 
@@ -20,11 +22,26 @@ describe('TravelContent Component', () => {
     'image3.jpg',
   ];
 
+  let store;
+  const mockStore = configureStore([]);
+  const initialState = {
+    auth: {
+      user: {
+        role: 'user',
+      },
+    },
+  };
+  beforeEach(() => {
+    store = mockStore(initialState);
+  });
+
   it('renders the TravelContent component with valid props', () => {
     const { getByText, getAllByAltText } = render(
-      <MemoryRouter>
-        <TravelContent selectedTravel={selectedTravel} randomPlaceImages={randomPlaceImages} />
-      </MemoryRouter>,
+      <Provider store={store}>
+        <MemoryRouter>
+          <TravelContent selectedTravel={selectedTravel} randomPlaceImages={randomPlaceImages} />
+        </MemoryRouter>
+      </Provider>,
     );
 
     expect(getByText(selectedTravel.name)).toBeInTheDocument();
@@ -38,9 +55,11 @@ describe('TravelContent Component', () => {
 
   it('renders the "Discover more places" link', () => {
     const { getByText } = render(
-      <MemoryRouter>
-        <TravelContent selectedTravel={selectedTravel} randomPlaceImages={randomPlaceImages} />
-      </MemoryRouter>,
+      <Provider store={store}>
+        <MemoryRouter>
+          <TravelContent selectedTravel={selectedTravel} randomPlaceImages={randomPlaceImages} />
+        </MemoryRouter>
+      </Provider>,
     );
 
     const discoverLink = getByText('Discover more places');
@@ -50,9 +69,11 @@ describe('TravelContent Component', () => {
 
   it('renders the "Book a Trip" button', () => {
     const { getByText } = render(
-      <MemoryRouter>
-        <TravelContent selectedTravel={selectedTravel} randomPlaceImages={randomPlaceImages} />
-      </MemoryRouter>,
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/']} basename="">
+          <TravelContent selectedTravel={selectedTravel} randomPlaceImages={randomPlaceImages} />
+        </MemoryRouter>
+      </Provider>,
     );
 
     const bookButton = getByText('Book a Trip');

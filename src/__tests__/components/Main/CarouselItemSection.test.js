@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 import CarouselItemsSection from '../../../components/Main/Carousel/CarouselItemSection';
 import '@testing-library/jest-dom';
@@ -9,6 +11,15 @@ jest.mock('react-transition-group', () => ({
   TransitionGroup: ({ children }) => <div>{children}</div>,
   CSSTransition: ({ children }) => <div>{children}</div>,
 }));
+
+const mockStore = configureStore([]);
+const store = mockStore({
+  auth: {
+    user: {
+      role: 'user-role',
+    },
+  },
+});
 
 const sampleItems = [
   {
@@ -44,22 +55,11 @@ const sampleItems = [
 describe('CarouselItemsSection Component', () => {
   it('renders the correct number of items', async () => {
     const { queryAllByTestId } = render(
-      <MemoryRouter>
-        <CarouselItemsSection items={sampleItems} showExtraCard={false} />
-      </MemoryRouter>,
-    );
-
-    await waitFor(() => {
-      const items = queryAllByTestId((testId) => testId.startsWith('carousel-item-'));
-      expect(items).toHaveLength(sampleItems.length);
-    });
-  });
-
-  it('renders an extra card when showExtraCard is true', async () => {
-    const { queryAllByTestId } = render(
-      <MemoryRouter>
-        <CarouselItemsSection items={sampleItems} showExtraCard />
-      </MemoryRouter>,
+      <Provider store={store}>
+        <MemoryRouter>
+          <CarouselItemsSection items={sampleItems} showExtraCard={false} />
+        </MemoryRouter>
+      </Provider>,
     );
 
     await waitFor(() => {

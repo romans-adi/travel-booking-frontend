@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-function validateArray(props, propName, componentName) {
+const validateArray = (props, propName, componentName) => {
   if (!Array.isArray(props[propName])) {
     return new Error(`Invalid prop '${propName}' supplied to '${componentName}'. It should be an array.`);
   }
   return null;
-}
+};
 
-function TravelContent({ selectedTravel, randomPlaceImages }) {
+const TravelContent = ({ selectedTravel, randomPlaceImages }) => {
   const isUser = useSelector((state) => state.auth.user.role === 'user');
 
   return (
@@ -90,7 +90,7 @@ function TravelContent({ selectedTravel, randomPlaceImages }) {
       </div>
     </div>
   );
-}
+};
 
 TravelContent.propTypes = {
   selectedTravel: PropTypes.shape({

@@ -6,7 +6,7 @@ import { fetchTravels } from '../../redux/reducers/travelsReducer';
 import { fetchPlaces } from '../../redux/reducers/placesReducer';
 import TravelContent from './TravelContent';
 
-function Travel() {
+const Travel = () => {
   const dispatch = useDispatch();
   const { travelId } = useParams();
   const travelsData = useSelector((state) => state.travels.data);
@@ -92,6 +92,6 @@ function Travel() {
       </div>
     </div>
   );
-}
+};
 
 export default Travel;

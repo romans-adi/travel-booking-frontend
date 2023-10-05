@@ -3,6 +3,8 @@ import { render, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import Carousel from '../../../components/Main/Carousel/Carousel';
 
 const sampleItems = [
@@ -26,16 +28,30 @@ const mockPrevSlide = jest.fn();
 const mockNextSlide = jest.fn();
 
 describe('Carousel Component', () => {
+  const mockStore = configureStore([]);
+
   it('renders items correctly', () => {
+    const store = mockStore({
+      auth: {
+        user: {
+          role: 'user',
+        },
+      },
+    });
+
     const { getByText, getByAltText } = render(
-      <Carousel
-        items={sampleItems}
-        prevSlide={mockPrevSlide}
-        nextSlide={mockNextSlide}
-        currentIndex={0}
-      />,
-      { wrapper: MemoryRouter },
+      <Provider store={store}>
+        <MemoryRouter>
+          <Carousel
+            items={sampleItems}
+            prevSlide={mockPrevSlide}
+            nextSlide={mockNextSlide}
+            currentIndex={0}
+          />
+        </MemoryRouter>
+      </Provider>,
     );
+
     sampleItems.forEach((item) => {
       expect(getByText(item.name)).toBeInTheDocument();
       expect(getByText(item.description)).toBeInTheDocument();
@@ -44,16 +60,25 @@ describe('Carousel Component', () => {
   });
 
   it('updates active item with keyboard navigation', () => {
-    const mockPrevSlide = jest.fn();
-    const mockNextSlide = jest.fn();
+    const store = mockStore({
+      auth: {
+        user: {
+          role: 'user',
+        },
+      },
+    });
+
     const { getByText, container } = render(
-      <Carousel
-        items={sampleItems}
-        currentIndex={0}
-        prevSlide={mockPrevSlide}
-        nextSlide={mockNextSlide}
-      />,
-      { wrapper: MemoryRouter },
+      <Provider store={store}>
+        <MemoryRouter>
+          <Carousel
+            items={sampleItems}
+            currentIndex={0}
+            prevSlide={mockPrevSlide}
+            nextSlide={mockNextSlide}
+          />
+        </MemoryRouter>
+      </Provider>,
     );
 
     act(() => {

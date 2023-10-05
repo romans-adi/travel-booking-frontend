@@ -4,10 +4,9 @@ import CarouselItemsSection from './CarouselItemSection';
 import CarouselControls from './CarouselControl';
 import '../../../App.scss';
 
-function Carousel({
+const Carousel = ({
   items, prevSlide, nextSlide, currentIndex,
-}) {
-  const [showExtraCard, setShowExtraCard] = useState(false);
+}) => {
   const visibleItems = items.slice(currentIndex, currentIndex + 3);
   const [isPrevArrowClicked, setIsPrevArrowClicked] = useState(false);
   const [isNextArrowClicked, setIsNextArrowClicked] = useState(false);
@@ -20,25 +19,17 @@ function Carousel({
   }, []);
 
   const handlePrevSlide = useCallback(() => {
-    setShowExtraCard(true);
-    setTimeout(() => {
-      setShowExtraCard(false);
-      prevSlide();
-      setIsPrevArrowClicked(true);
-      setIsNextArrowClicked(false);
-      resetStylesAfterTimeout();
-    }, 0);
+    prevSlide();
+    setIsPrevArrowClicked(true);
+    setIsNextArrowClicked(false);
+    resetStylesAfterTimeout();
   }, [prevSlide, setIsPrevArrowClicked, setIsNextArrowClicked, resetStylesAfterTimeout]);
 
   const handleNextSlide = useCallback(() => {
-    setShowExtraCard(true);
-    setTimeout(() => {
-      setShowExtraCard(false);
-      nextSlide();
-      setIsPrevArrowClicked(false);
-      setIsNextArrowClicked(true);
-      resetStylesAfterTimeout();
-    }, 0);
+    nextSlide();
+    setIsPrevArrowClicked(false);
+    setIsNextArrowClicked(true);
+    resetStylesAfterTimeout();
   }, [nextSlide, setIsPrevArrowClicked, setIsNextArrowClicked, resetStylesAfterTimeout]);
 
   useEffect(() => {
@@ -61,7 +52,7 @@ function Carousel({
     <div className="carousel-container">
       <div className="carousel">
         <div className="carousel-inner flex flex-col md:flex-row justify-around text-center gap-10 w-full md:items-start items-center">
-          <CarouselItemsSection items={visibleItems} showExtraCard={showExtraCard} />
+          <CarouselItemsSection items={visibleItems} />
         </div>
       </div>
       <CarouselControls
@@ -72,7 +63,7 @@ function Carousel({
       />
     </div>
   );
-}
+};
 
 Carousel.propTypes = {
   items: PropTypes.arrayOf(

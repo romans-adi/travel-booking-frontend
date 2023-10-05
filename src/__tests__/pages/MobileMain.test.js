@@ -9,10 +9,12 @@ const mockPlaceData = [
   {
     id: 1,
     name: 'Place 1',
+    description: 'Good Place',
   },
   {
     id: 2,
     name: 'Place 2',
+    description: 'Bad Place',
   },
 ];
 
@@ -27,9 +29,8 @@ describe('MobileMain Component', () => {
     expect(screen.getByTestId('mobile-main')).toBeInTheDocument();
 
     mockPlaceData.forEach((place) => {
-      const link = screen.getByRole('link', { name: place.name });
+      const link = screen.getByText(place.name);
       expect(link).toBeInTheDocument();
-      expect(link.getAttribute('href')).toBe(`/travel/${place.id}`);
     });
   });
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { render, fireEvent } from '@testing-library/react';
 import BookNowButton from '../../../components/Booking/BookButton';
 import '@testing-library/jest-dom';
@@ -19,7 +20,9 @@ describe('BookNowButton Component', () => {
       <BookNowButton handleCreateBooking={handleCreateBooking} />,
     );
     const buttonElement = getByText('Book Now');
-    fireEvent.click(buttonElement);
+    act(() => {
+      fireEvent.click(buttonElement);
+    });
     expect(handleCreateBooking).toHaveBeenCalledTimes(1);
   });
 });

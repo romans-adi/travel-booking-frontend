@@ -31,19 +31,19 @@ const Home = () => {
     };
   }, [index]);
 
-  function handleSlide(dotIndex) {
+  const handleSlide = (dotIndex) => {
     setIndex(dotIndex);
-  }
+  };
 
-  function handleSignUp() {
+  const handleSignUp = () => {
     const signUpContainer = document.getElementById('sign-up-container');
     signUpContainer.classList.toggle('active');
-  }
+  };
 
-  function handleLogIn() {
+  const handleLogIn = () => {
     const logInContainer = document.getElementById('log-in-container');
     logInContainer.classList.toggle('active');
-  }
+  };
 
   return (
     <div id="home-container">

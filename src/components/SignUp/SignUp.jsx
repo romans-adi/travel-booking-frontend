@@ -14,16 +14,16 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [selectedRole, setSelectedRole] = useState('user');
 
-  function closeSignUp() {
+  const closeSignUp = () => {
     const signUpContainer = document.getElementById('sign-up-container');
     signUpContainer.classList.toggle('active');
-  }
+  };
 
-  function handleLogIn() {
+  const handleLogIn = () => {
     const logInContainer = document.getElementById('log-in-container');
     logInContainer.classList.toggle('active');
     closeSignUp();
-  }
+  };
 
   const onSubmit = (formData) => {
     dispatch(registerUser(formData));

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { v4 as uuidv4 } from 'uuid';
 import iconMappings from './IconMapping';
 
-function TravelTypeIcons({ travelType }) {
+const TravelTypeIcons = ({ travelType }) => {
   const icons = iconMappings[travelType] || null;
 
   if (!icons) {
@@ -22,7 +22,7 @@ function TravelTypeIcons({ travelType }) {
       ))}
     </div>
   );
-}
+};
 
 TravelTypeIcons.propTypes = {
   travelType: PropTypes.string,

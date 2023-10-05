@@ -15,10 +15,10 @@ const LogIn = () => {
 
   const { register, handleSubmit } = useForm();
 
-  function closeLogIn() {
+  const closeLogIn = () => {
     const logInContainer = document.getElementById('log-in-container');
     logInContainer.classList.toggle('active');
-  }
+  };
 
   const onSubmit = (formData) => {
     dispatch(loginUser(formData));
@@ -26,11 +26,11 @@ const LogIn = () => {
     closeLogIn();
   };
 
-  function handleSignUp() {
+  const handleSignUp = () => {
     const signUpContainer = document.getElementById('sign-up-container');
     signUpContainer.classList.toggle('active');
     closeLogIn();
-  }
+  };
 
   return (
     <div id="log-in-container">

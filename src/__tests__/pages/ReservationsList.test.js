@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk'; // Import thunk middleware
+import thunk from 'redux-thunk';
 import ReservationsList from '../../pages/Reservations/ReservationsList';
 import '@testing-library/jest-dom';
 
