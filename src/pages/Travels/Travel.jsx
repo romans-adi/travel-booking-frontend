@@ -33,7 +33,7 @@ const Travel = () => {
 
   if (!selectedTravel) {
     return (
-      <div className="flex justify-center items-center h-screen w-full">
+      <div className="flex flex-col gap-8 justify-center items-center h-screen w-full">
         <div className="text-stone-600 text-2xl">Travel not found</div>
         <ClipLoader size="50" />
       </div>
