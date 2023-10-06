@@ -26,11 +26,14 @@
   }
 
   #log-in-form-container { // Change ID selector to use log-in-form-container
-    height: 100%;
+    height: auto;
     width: 100%;
     overflow-y: scroll;
-
-    @include center-column;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
   }
 
   p {
@@ -58,6 +61,7 @@
 
     .login-input-container.role {
       border: none;
+      margin: 24px;
 
       label {
         width: 100%;
@@ -127,7 +131,6 @@
 
 #sign-up-container.active { // Change ID selector to use sign-up-container
   transform: translateX(0);
-  display: flex;
 
   #log-in-form-container { // Change ID selector to use log-in-form-container
     border: 1px solid black;
