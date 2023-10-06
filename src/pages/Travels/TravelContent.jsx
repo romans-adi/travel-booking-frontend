@@ -13,7 +13,7 @@ const TravelContent = ({ selectedTravel, randomPlaceImages }) => {
   const isUser = useSelector((state) => state.auth.user.role === 'user');
 
   return (
-    <div className="flex items-stretch mx-auto w-full px-16 gap-16 py-8 relative justify-center flex-wrap lg:flex-nowrap">
+    <div className="flex items-stretch mx-auto w-full px-16 gap-16 pb-8 pt-14 relative justify-center flex-wrap lg:flex-nowrap">
       <img
         src={selectedTravel?.image}
         alt={selectedTravel?.name}
