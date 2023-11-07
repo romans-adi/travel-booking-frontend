@@ -13,7 +13,6 @@ const HomeSlider = ({ sliderImages, slideIndex }) => (
         alt="slider"
         key={index}
         style={{ transform: `translate3d(0, ${-slideIndex * 100}%, 0)` }}
-        loading="lazy"
       />
     ))}
   </div>

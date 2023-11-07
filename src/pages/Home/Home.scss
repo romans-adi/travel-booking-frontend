@@ -120,8 +120,13 @@
 
   #home-container:hover {
     .home-slider-container {
-      transform: scale(1.1);
-      filter: brightness(0.3);
+      filter: brightness(0.5);
+      
+      img {
+        height: 120%;
+        transition: height 10s ease-in-out;
+        transition: transform .5 ease-in-out;
+      }
     }
   }
 }
