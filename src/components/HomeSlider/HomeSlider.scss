@@ -23,6 +23,7 @@
 
     img {
       min-width: 100vw;
+      transition: height 10s ease-in-out;
     }
   }
 }
