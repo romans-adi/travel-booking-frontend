@@ -76,7 +76,7 @@
   @include center-column;
 
   justify-content: space-around;
-  background-color: $white;
+  background-color: transparent;
   transform: translateY(0%);
   width: 100%;
 }
@@ -108,6 +108,7 @@
   z-index: 1000;
   margin-top: 24px;
   margin-left: 24px;
+  z-index: 100001;
 
   .close-bar {
     transition: all 0.5s ease-in-out;
@@ -128,13 +129,15 @@
 
 @media (min-width: 768px) {
   #navpanel-container {
-    position: fixed;
-    height: 50px;
-    width: 50px;
+    transition: all 2s ease-in-out;
+    background-color: transparent;
+    position: static;
+    z-index: 0;
+    width: 0;
   }
 
   #navpanel-container.show {
-    position: static;
+    display: flex;
     height: auto;
     width: auto;
   }
@@ -153,7 +156,7 @@
     justify-content: space-around;
     width: 100%;
     padding: 24px 0;
-    transition: all 0.5s ease-out;
+    transition: all 0s;
     visibility: hidden;
     opacity: 0;
     overflow: hidden;
@@ -168,5 +171,6 @@
     min-width: 250px;
     visibility: visible;
     opacity: 1;
+    background-color: white;
   }
 }
