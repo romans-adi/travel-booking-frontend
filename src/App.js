@@ -2,7 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
-import { authSuccess } from './redux/reducers/auth/authSlice';
+import { authSuccess, logout } from './redux/reducers/auth/authSlice';
 import './App.scss';
 import Home from './pages/Home/Home';
 import Navbar from './components/Navbar/Navbar';
@@ -21,6 +21,8 @@ const App = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (token && user) {
       dispatch(authSuccess({ token, user }));
+    } else if (!token) {
+      dispatch(logout());
     }
   });
 
