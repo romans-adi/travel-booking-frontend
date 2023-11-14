@@ -2,7 +2,7 @@
 @import '../../styles/variables';
 @import '../../styles/colors';
 
-#sign-up-container { // Change ID selector to use sign-up
+#sign-up-container {
   transform: translateX(200%);
   position: fixed;
   top: 12px;
@@ -127,7 +127,7 @@
     text-align: left;
   }
 
-  #log-in-image-container { // Change ID selector to use log-in-image-container
+  #log-in-image-container {
     display: none;
   }
 }
@@ -139,13 +139,12 @@
 
 @media (min-width: 768px) {
   #sign-up-container {
-
     top: 10%;
     right: 10%;
     bottom: 10%;
     left: 10%;
-
-    #log-in-image-container { // Change ID selector to use log-in-image-container
+    flex-direction: row !important;
+    #log-in-image-container {
       display: flex;
       width: 50%;
       overflow: hidden;
