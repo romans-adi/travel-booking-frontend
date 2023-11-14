@@ -23,6 +23,8 @@ const App = () => {
       dispatch(authSuccess({ token, user }));
     } else if (!token) {
       dispatch(logout());
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
     }
   });
 
