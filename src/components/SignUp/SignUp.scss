@@ -25,7 +25,7 @@
     }
   }
 
-  #log-in-form-container { // Change ID selector to use log-in-form-container
+  #log-in-form-container {
     height: auto;
     width: 100%;
     overflow-y: scroll;
@@ -62,6 +62,7 @@
     .login-input-container.role {
       border: none;
       margin: 24px;
+      width: 100%;
 
       label {
         width: 100%;
@@ -69,12 +70,14 @@
         @include center-column;
 
         select {
-          width: 100%;
+          width: 90%;
           text-align: center;
           height: 24px;
           margin-top: 12px;
           border: 1px solid black;
           background-color: $white;
+          border-radius: 50px;
+          padding: 0 12px;
 
           &:hover,
           &:focus {
@@ -129,17 +132,13 @@
   }
 }
 
-#sign-up-container.active { // Change ID selector to use sign-up-container
+#sign-up-container.active { 
   transform: translateX(0);
-
-  #log-in-form-container { // Change ID selector to use log-in-form-container
-    border: 1px solid black;
-  }
+  @include center-column;
 }
 
 @media (min-width: 768px) {
-  #sign-up-container { // Change ID selector to use sign-up-container
-    @include center;
+  #sign-up-container {
 
     top: 10%;
     right: 10%;
@@ -157,7 +156,7 @@
       }
     }
 
-    #log-in-form-container { // Change ID selector to use log-in-form-container
+    #log-in-form-container {
       width: 50%;
       height: 100%;
       border: 1px solid black;
