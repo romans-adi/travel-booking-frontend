@@ -53,7 +53,8 @@
 
   #home-buttons {
     position: absolute;
-    bottom: 10%;
+    bottom: 0%;
+    padding: 2%;
 
     #log-in-button {
       @include primary-button;
