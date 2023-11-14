@@ -65,7 +65,7 @@ export const loginUser = (formData) => async (dispatch) => {
     }
   } catch (error) {
     dispatch(authFailure(error.message));
-    toast.error('Login failed. Email or password is incorrect.');
+    toast.error('Login failed. Email or password is incorrect. Please try again or sign up.');
   }
 };
 
