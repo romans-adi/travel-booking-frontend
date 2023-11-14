@@ -15,8 +15,8 @@
     font-size: 2rem;
     color: $white;
     text-align: center;
-    margin-top: auto;
     width: 80%;
+    margin-top: 100%;
   }
 
   #home-description {
@@ -53,6 +53,7 @@
 
   #home-buttons {
     position: absolute;
+    bottom: 10%;
 
     #log-in-button {
       @include primary-button;
