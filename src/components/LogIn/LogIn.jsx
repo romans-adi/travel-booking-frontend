@@ -13,7 +13,11 @@ const LogIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const closeLogIn = () => {
     const logInContainer = document.getElementById('log-in-container');
@@ -23,7 +27,6 @@ const LogIn = () => {
   const onSubmit = (formData) => {
     dispatch(loginUser(formData));
     navigate('/');
-    closeLogIn();
   };
 
   const handleSignUp = () => {
@@ -49,10 +52,16 @@ const LogIn = () => {
               id="email"
               name="email"
               placeholder="Email"
-              required
-              {...register('email', { required: 'Email is required' })}
+              {...register('email', {
+                required: 'Email is required',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Invalid email address',
+                },
+              })}
             />
           </div>
+          {errors.email && <p className="error-message">{`* ${errors.email.message}`}</p>}
           <div className="login-input-container">
             <BiSolidKey className="input-icon" />
             <input
@@ -60,10 +69,10 @@ const LogIn = () => {
               id="password"
               name="password"
               placeholder="Password"
-              required
               {...register('password', { required: 'Password is required' })}
             />
           </div>
+          {errors.password && <p className="error-message">{`* ${errors.password.message}`}</p>}
           <button className="submit-button" type="submit">LOGIN</button>
         </form>
         <p>Don&rsquo;t have an account yet? </p>
